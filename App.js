@@ -1,6 +1,6 @@
 import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
 import Home from './Screens/Home';
-import History from './Screens/History_Nav';
+import History from './Screens/H_MainNav';
 import gotoInformation from './Screens/gotoinformation';
 
 const TabNavigator =  createBottomTabNavigator({

@@ -6,9 +6,9 @@ class Home extends React.Component{
   constructor(){
     super();
     this.state = {
-      counter : 0,
-      time : '',
-      nowTime : ''
+      count : 0,
+      date : '',
+      time : ''
     }
   }
   render() {
@@ -17,37 +17,43 @@ class Home extends React.Component{
         <TouchableOpacity onPress={() => this.plusCounter()}>
           <Text>PLUS COUNTER</Text>
         </TouchableOpacity>
-        <Text>Counter : {this.state.counter} Time : {this.state.time}</Text>
       </View>
     );
   }
   plusCounter = async() => {
-    await this.getTime()
+    await this.setDate()
     this.pushData();
   }
-  getTime = async() => {
+  setDate(){
     var date = new Date().getDate();
     var month = new Date().getMonth();
     var year = new Date().getFullYear();
+    this.setState({date:
+      date + '/' + month + '/' + year
+    });
+  }
+  setTime(){
     var hour = new Date().getHours();
     var minute = new Date().getMinutes();
-    this.setState({counter:++this.state.counter});
     this.setState({time:
-      date + '/' + month + '/' + year + ' ' + hour + ':' + minute
+      hour + ':' + minute
     });
   }
   pushData = async() => {
-    //await AsyncStorage.removeItem('timedata')
     const dataToBeSaved = {
-      currCount : this.state.counter,
-      timer : this.state.time
+      currCount : this.state.count,
+      date : this.state.date,
+      time : []
     }
+    dataToBeSaved.time.push(this.state.time);
     const existingData = await AsyncStorage.getItem('timedata')
     let newData = JSON.parse(existingData);
     if(newData == null){
       newData = [];
     }
     newData.push(dataToBeSaved);
+    newData[0].time.push(this.state.time);
+    newData[0].currCount = ++this.state.count;
     this.setData('timedata',JSON.stringify(newData));
   }
   setData = async(key,value) => {

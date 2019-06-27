@@ -1,6 +1,6 @@
 import {createStackNavigator, createAppContainer} from 'react-navigation';
-import History_Diary from './History_Diary';
-import History_Hourly from './History_Hourly';
+import History_Diary from './H_Diary';
+import History_Hourly from './H_Hourly';
 
 const StackNavigator =  createStackNavigator({
   History_Diary : History_Diary,
