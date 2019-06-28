@@ -32,7 +32,7 @@ class History_Diary extends React.Component{
       counter : 0,
       listArr: []
     }
-    this.testGET();
+    this.getDateList();
   }
   static navigationOptions = ({ navigation }) => {
     return {
@@ -47,7 +47,7 @@ class History_Diary extends React.Component{
     const {navigate} = this.props.navigation;
     if(this.state.listArr == null)this.state.listArr = [];
     let dateList = this.state.listArr.map((val,key) => {
-      return <TouchableOpacity key={key} onPress={() => navigate('History_Hourly')}><List keyval={key} val={val}></List></TouchableOpacity>
+      return <TouchableOpacity key={key} onPress={() => navigate('History_Hourly',{Index:key})}><List keyval={key} val={val}></List></TouchableOpacity>
     });
     return (
       <View style={styles.container}>
@@ -64,53 +64,12 @@ class History_Diary extends React.Component{
     );
   }
   addList = async() => {
-    // await this.pushData('timedata');
-    this.testGET();
-    // this.state.listArr.push({
-    //   'date' : this.state.time,
-    //   'count' : this.state.counter
-    // });
+    this.getDateList();
     this.setState({listArr:this.state.listArr});
   }
-  testGET = async() => {
+  getDateList = async() => {
     var newData = await this.getDataWithKey('timedata');
     this.setState({listArr:newData});
-  }
-  plusCounter(){
-    this.getTime().then(() => {this.pushData('timedata');});
-  }
-  getTime(){
-    var date = new Date().getDate();
-    var month = new Date().getMonth();
-    var year = new Date().getFullYear();
-    var hour = new Date().getHours();
-    var minute = new Date().getMinutes();
-    this.setState({counter:++this.state.counter});
-    this.setState({time:
-      date + '/' + month + '/' + year + ' ' + hour + ':' + minute
-    });
-  }
-  pushData = async(key) => {
-    await this.getTime();
-    const dataToBeSaved = {
-      currCount : this.state.counter,
-      date : this.state.time
-    }
-    const data = await AsyncStorage.getItem(key)
-    let newData = JSON.parse(data);
-    if(newData == null){
-      newData = [];
-    }
-    newData.push(dataToBeSaved);
-    this.setData('timedata',JSON.stringify(newData));
-  }
-  setData = async(key, value) => {
-    try{
-      await AsyncStorage.setItem(key,value)
-    }
-    catch(e){
-      return;
-    }
   }
   getDataWithKey = async(key) => {
     try {
@@ -119,14 +78,6 @@ class History_Diary extends React.Component{
       return newData;
     }
     catch(e){
-      return;
-    }
-  }
-  resetData = async() => {
-    try{
-      await AsyncStorage.removeItem('timedata');
-    }
-    catch{
       return;
     }
   }

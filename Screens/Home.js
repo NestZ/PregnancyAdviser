@@ -6,16 +6,18 @@ class Home extends React.Component{
   constructor(){
     super();
     this.state = {
-      count : 0,
+      count : '',
       date : '',
-      time : ''
+      time : '',
+      thisCount : 0
     }
+    this.setThisCount();
   }
   render() {
     return (
       <View>
         <TouchableOpacity onPress={() => this.plusCounter()}>
-          <Text>PLUS COUNTER</Text>
+          <Text>PLUS COUNTER : {this.state.thisCount}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -72,9 +74,23 @@ class Home extends React.Component{
     }
     //Set Data
     this.setData('timedata',JSON.stringify(newData));
+    this.setThisCount();
   }
   setData = async(key,value) => {
     await AsyncStorage.setItem(key,value);
+  }
+  setThisCount = async() => {
+    const rawData = await AsyncStorage.getItem('timedata')
+    let newData = JSON.parse(rawData);
+    if(newData != null){
+      var size = Object.keys(newData).length;
+      if(newData[size - 1].currCount > 0){
+        this.setState({thisCount:String(newData[size - 1].currCount)});
+      }
+    }
+    else{
+      this.setState({thisCount:''});
+    }
   }
 }
 

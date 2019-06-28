@@ -1,6 +1,5 @@
 import {StyleSheet, Text, View, Button, TouchableOpacity, ScrollView} from 'react-native';
 import React, {Component} from 'react';
-import AsyncStorage from '@react-native-community/async-storage';
 
 const styles = StyleSheet.create({
     list:{
@@ -26,15 +25,14 @@ const styles = StyleSheet.create({
     }
 });
 
-class test extends React.Component{
+class H_Hourly_S extends React.Component{
   render(){
     return (
         <View key={this.props.keyval} style={styles.list}>
-            <Text style={styles.date}>{this.props.val.date}</Text>
-            <Text style={styles.count}>{this.props.val.count}</Text>
+            <Text style={styles.date}>{this.props.val}</Text>
         </View>
     );
   }
 }
 
-export default test;
+export default H_Hourly_S;
