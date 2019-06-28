@@ -22,6 +22,7 @@ class Home extends React.Component{
   }
   plusCounter = async() => {
     await this.setDate()
+    await this.setTime()
     this.pushData();
   }
   setDate(){
@@ -40,20 +41,36 @@ class Home extends React.Component{
     });
   }
   pushData = async() => {
+    //Temp
+    var nowDate = new Date().getDate();
     const dataToBeSaved = {
-      currCount : this.state.count,
+      currCount : 1,
       date : this.state.date,
+      dateNo : new Date().getDate(),
       time : []
     }
     dataToBeSaved.time.push(this.state.time);
+    //Get previous data
     const existingData = await AsyncStorage.getItem('timedata')
     let newData = JSON.parse(existingData);
-    if(newData == null){
-      newData = [];
+    if(newData != null){
+      var size = Object.keys(newData).length;
     }
-    newData.push(dataToBeSaved);
-    newData[0].time.push(this.state.time);
-    newData[0].currCount = ++this.state.count;
+    //Check if it already has data
+    if(newData == null){
+      //Create new data
+      newData = [];
+      newData.push(dataToBeSaved);
+    }
+    else if(newData[size - 1].dateNo == nowDate){
+      //Push time & Plus Count
+      newData[size - 1].time.push(this.state.time);
+      newData[size - 1].currCount = newData[size - 1].currCount + 1;
+    }
+    else if(newData[size - 1].dateNo != nowDate){
+      newData.push(dataToBeSaved);
+    }
+    //Set Data
     this.setData('timedata',JSON.stringify(newData));
   }
   setData = async(key,value) => {

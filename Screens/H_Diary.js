@@ -54,12 +54,6 @@ class History_Diary extends React.Component{
         <View style={styles.header}>
           <Text style={styles.headerText}>History</Text>
         </View>
-        <TouchableOpacity onPress={() => this.pushData('timedata')}>
-          <Text>add to cache</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.addList.bind(this)}>
-          <Text>add state to list</Text>
-        </TouchableOpacity>
         <TouchableOpacity onPress={() => AsyncStorage.removeItem('timedata')}>
           <Text>Reset</Text>
         </TouchableOpacity>
