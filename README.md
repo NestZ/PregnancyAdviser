@@ -7,3 +7,7 @@ react-native link react-native-gesture-handler
 npm install @react-native-community/async-storage
 
 react-native link @react-native-community/async-storage
+
+npm install --save react-native-sound-player
+
+react-native link react-native-sound-player
