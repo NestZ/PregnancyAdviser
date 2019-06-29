@@ -3,6 +3,9 @@ package com.projectno2;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.johnsonsu.rnsoundplayer.RNSoundPlayerPackage;
+import com.reactlibrary.ReactExoplayerPackage;
+import com.zmxv.RNSound.RNSoundPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -24,6 +27,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNSoundPlayerPackage(),
+            new ReactExoplayerPackage(),
+            new RNSoundPackage(),
             new RNGestureHandlerPackage()
       );
     }
