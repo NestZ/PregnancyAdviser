@@ -1,6 +1,24 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+
+const styles = StyleSheet.create({
+  container:{
+    flex:1
+  },
+  header:{
+    backgroundColor: '#639fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 5,
+    borderBottomColor: '#ddd'
+  },
+  headerText:{
+    color: 'white',
+    fontSize: 18,
+    padding: 13
+  },
+})
 
 class Home extends React.Component{
   constructor(){
@@ -15,7 +33,10 @@ class Home extends React.Component{
   }
   render() {
     return (
-      <View>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>Home</Text>
+        </View>
         <TouchableOpacity onPress={() => this.plusCounter()}>
           <Text>PLUS COUNTER : {this.state.thisCount}</Text>
         </TouchableOpacity>
@@ -43,7 +64,6 @@ class Home extends React.Component{
     });
   }
   pushData = async() => {
-    //Temp
     var nowDate = new Date().getDate();
     const dataToBeSaved = {
       currCount : 1,
@@ -52,27 +72,22 @@ class Home extends React.Component{
       time : []
     }
     dataToBeSaved.time.push(this.state.time);
-    //Get previous data
     const existingData = await AsyncStorage.getItem('timedata')
     let newData = JSON.parse(existingData);
     if(newData != null){
       var size = Object.keys(newData).length;
     }
-    //Check if it already has data
     if(newData == null){
-      //Create new data
       newData = [];
       newData.push(dataToBeSaved);
     }
     else if(newData[size - 1].dateNo == nowDate){
-      //Push time & Plus Count
       newData[size - 1].time.push(this.state.time);
       newData[size - 1].currCount = newData[size - 1].currCount + 1;
     }
     else if(newData[size - 1].dateNo != nowDate){
       newData.push(dataToBeSaved);
     }
-    //Set Data
     this.setData('timedata',JSON.stringify(newData));
     this.setThisCount();
   }

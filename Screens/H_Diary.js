@@ -17,11 +17,20 @@ const styles = StyleSheet.create({
     headerText:{
       color: 'white',
       fontSize: 18,
-      padding: 15
+      padding: 13
     },
     scrollContainer:{
       flex: 1
     },
+    nullList:{
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    nullListText:{
+      color: '#8f8f8f',
+      fontSize: 23,
+      paddingTop: 200
+    }
 })
 
 class History_Diary extends React.Component{
@@ -30,7 +39,7 @@ class History_Diary extends React.Component{
     this.state = {
       time: '',
       counter : 0,
-      listArr: []
+      listArr : []
     }
     this.getDateList();
   }
@@ -54,14 +63,20 @@ class History_Diary extends React.Component{
         <View style={styles.header}>
           <Text style={styles.headerText}>History</Text>
         </View>
-        <TouchableOpacity onPress={() => AsyncStorage.removeItem('timedata')}>
-          <Text>Reset</Text>
-        </TouchableOpacity>
+        <View style={styles.nullList}>
+          {this.checkNullList()}
+        </View>
         <ScrollView style={styles.scrollContainer}>
           {dateList}
         </ScrollView>
       </View>
     );
+  }
+  checkNullList(){
+    if(Object.keys(this.state.listArr).length == 0){
+      return (<Text style={styles.nullListText}>- Doesn't have History yet -</Text>);
+    }
+    else return null;
   }
   addList = async() => {
     this.getDateList();

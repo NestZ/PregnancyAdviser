@@ -11,3 +11,9 @@ react-native link @react-native-community/async-storage
 npm install --save react-native-sound-player
 
 react-native link react-native-sound-player
+
+npm install --save react-native-vector-icons
+
+react-native link react-native-vector-icons
+
+npm install --save react-native-elements
