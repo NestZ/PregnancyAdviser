@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, ImageBackground} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const styles = StyleSheet.create({
@@ -7,17 +7,33 @@ const styles = StyleSheet.create({
     flex:1
   },
   header:{
-    backgroundColor: '#639fff',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-    borderBottomWidth: 5,
+    borderBottomWidth: 3,
     borderBottomColor: '#ddd'
   },
   headerText:{
-    color: 'white',
-    fontSize: 18,
+    color: '#f5424e',
+    fontSize: 20,
     padding: 13
   },
+  footIcon:{
+    width: 170,
+    height: 170,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center'
+  },
+  iconContainer:{
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  counterText:{
+    color: 'white',
+    fontSize: 60
+  }
 })
 
 class Home extends React.Component{
@@ -40,6 +56,13 @@ class Home extends React.Component{
         <TouchableOpacity onPress={() => this.plusCounter()}>
           <Text>PLUS COUNTER : {this.state.thisCount}</Text>
         </TouchableOpacity>
+        <View style={styles.iconContainer}>
+          <TouchableOpacity>
+            <ImageBackground style={styles.footIcon} source={require('./img/footIcon.png')}>
+              <Text style={styles.counterText}>{this.state.thisCount}</Text>
+            </ImageBackground>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -81,7 +104,7 @@ class Home extends React.Component{
       newData = [];
       newData.push(dataToBeSaved);
     }
-    else if(newData[size - 1].dateNo == nowDate){
+    else if(newData[size - 1].dateNo === nowDate){
       newData[size - 1].time.push(this.state.time);
       newData[size - 1].currCount = newData[size - 1].currCount + 1;
     }
@@ -99,8 +122,12 @@ class Home extends React.Component{
     let newData = JSON.parse(rawData);
     if(newData != null){
       var size = Object.keys(newData).length;
-      if(newData[size - 1].currCount > 0){
+      var nowDate = new Date().getDate();
+      if(newData[size - 1].currCount > 0 && newData[size - 1].dateNo === nowDate){
         this.setState({thisCount:String(newData[size - 1].currCount)});
+      }
+      else{
+        this.setState({thisCount:''});
       }
     }
     else{

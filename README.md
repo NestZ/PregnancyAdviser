@@ -17,3 +17,7 @@ npm install --save react-native-vector-icons
 react-native link react-native-vector-icons
 
 npm install --save react-native-elements
+
+Credits
+
+Roundicons

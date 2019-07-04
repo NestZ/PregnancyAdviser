@@ -8,15 +8,15 @@ const styles = StyleSheet.create({
       flex:1
     },
     header:{
-      backgroundColor: '#E91E63',
+      backgroundColor: 'white',
       alignItems: 'center',
       justifyContent: 'center',
-      borderBottomWidth: 5,
+      borderBottomWidth: 3,
       borderBottomColor: '#ddd'
     },
     headerText:{
-      color: 'white',
-      fontSize: 18,
+      color: '#f5424e',
+      fontSize: 20,
       padding: 13
     },
     scrollContainer:{
