@@ -21,3 +21,4 @@ npm install --save react-native-elements
 Credits
 
 Roundicons
+Lucy G

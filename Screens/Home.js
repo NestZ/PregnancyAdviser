@@ -53,11 +53,8 @@ class Home extends React.Component{
         <View style={styles.header}>
           <Text style={styles.headerText}>Home</Text>
         </View>
-        <TouchableOpacity onPress={() => this.plusCounter()}>
-          <Text>PLUS COUNTER : {this.state.thisCount}</Text>
-        </TouchableOpacity>
         <View style={styles.iconContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => this.plusCounter()}>
             <ImageBackground style={styles.footIcon} source={require('./img/footIcon.png')}>
               <Text style={styles.counterText}>{this.state.thisCount}</Text>
             </ImageBackground>

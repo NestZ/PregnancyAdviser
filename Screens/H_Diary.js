@@ -50,7 +50,7 @@ class History_Diary extends React.Component{
   }
   componentDidMount(){
     this.addList.bind(this);
-    this.props.navigation.addListener('willFocus',this.addList.bind(this));
+    this.props.navigation.addListener('didFocus',this.addList.bind(this));
   }
   render(){
     const {navigate} = this.props.navigation;
