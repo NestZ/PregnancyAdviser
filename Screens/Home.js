@@ -79,6 +79,8 @@ class Home extends React.Component{
   setTime(){
     var hour = new Date().getHours();
     var minute = new Date().getMinutes();
+    if(hour < 10)hour = '0' + hour;
+    if(minute < 10)minute = '0' + minute;
     this.setState({time:
       hour + ':' + minute
     });
