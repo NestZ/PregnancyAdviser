@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, ImageBackground, Modal, Button} from 'react-native';
+import { DeviceEventEmitter } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import Notification from 'react-native-android-local-notification';
 
 const styles = StyleSheet.create({
   container:{
@@ -139,7 +141,8 @@ class Home extends React.Component{
         <TouchableOpacity style={styles.minusButton} onPress={() => this.minusCounter()}>
           <Text style={styles.minusButtonText}>Delete 1</Text>
         </TouchableOpacity>
-        <Button onPress={() => this.Show_Custom_Alert(true)} title="Click Here To Show Custom Alert Dialog" />
+        <Button onPress={() => this.Show_Custom_Alert(true)} title="Click Here To Show Custom Alert Dialog"/>
+        <Button onPress={() => Notification.create({ subject: 'Hey', message: 'Yo! Hello world.' })} title="kuy"/>
       </View>
     );
   }
