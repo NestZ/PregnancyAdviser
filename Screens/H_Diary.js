@@ -42,15 +42,13 @@ class History_Diary extends React.Component{
       listArr : []
     }
     this.getDateList();
+    this.addList.bind(this);
+    this.props.navigation.addListener('didFocus',this.addList.bind(this));
   }
   static navigationOptions = ({ navigation }) => {
     return {
        header: () => null
     } 
-  }
-  componentDidMount(){
-    this.addList.bind(this);
-    this.props.navigation.addListener('didFocus',this.addList.bind(this));
   }
   render(){
     const {navigate} = this.props.navigation;
