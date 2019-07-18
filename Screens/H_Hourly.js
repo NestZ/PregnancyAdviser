@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Button, TouchableOpacity, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import React, {Component} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import List from './H_Hourly_S';
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
     scrollContainer:{
       flex: 1,
-      marginBottom : 200
+      marginBottom : 120
     },
 })
 

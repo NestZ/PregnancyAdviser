@@ -33,6 +33,22 @@ const styles = StyleSheet.create({
   counterText:{
     color: 'white',
     fontSize: 60
+  },
+  minusButton:{
+    position: 'absolute',
+    left: 20,
+    bottom: 40,
+    backgroundColor: '#f5424e',
+    width: 90,
+    height: 50,
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 5
+  },
+  minusButtonText:{
+    color: 'white',
+    fontSize: 16
   }
 })
 
@@ -60,8 +76,30 @@ class Home extends React.Component{
             </ImageBackground>
           </TouchableOpacity>
         </View>
+        <TouchableOpacity style={styles.minusButton} onPress={() => this.minusCounter()}>
+          <Text style={styles.minusButtonText}>Delete 1</Text>
+        </TouchableOpacity>
       </View>
     );
+  }
+  minusCounter = async() => {
+    var nowDate = new Date().getDate();
+    const existingData = await AsyncStorage.getItem('timedata')
+    let data = JSON.parse(existingData);
+    if(data != null){
+      var size = Object.keys(data).length;
+      if(data[size - 1].dateNo === nowDate && data[size - 1].currCount > 0){
+        if(data[size - 1].currCount === 1){
+          data.pop();
+        }
+        else{
+          data[size - 1].time.pop();
+          data[size - 1].currCount = data[size - 1].currCount - 1;
+        }
+        this.setData('timedata',JSON.stringify(data));
+        this.setThisCount();
+      }
+    }
   }
   plusCounter = async() => {
     await this.setDate()
@@ -119,18 +157,13 @@ class Home extends React.Component{
   setThisCount = async() => {
     const rawData = await AsyncStorage.getItem('timedata')
     let newData = JSON.parse(rawData);
-    if(newData != null){
+    if(newData != null && newData[size - 1].currCount > 0 && newData[size - 1].dateNo === nowDate){
       var size = Object.keys(newData).length;
       var nowDate = new Date().getDate();
-      if(newData[size - 1].currCount > 0 && newData[size - 1].dateNo === nowDate){
-        this.setState({thisCount:String(newData[size - 1].currCount)});
-      }
-      else{
-        this.setState({thisCount:''});
-      }
+      this.setState({thisCount:String(newData[size - 1].currCount)});
     }
     else{
-      this.setState({thisCount:''});
+      this.setState({thisCount:'0'});
     }
   }
 }
