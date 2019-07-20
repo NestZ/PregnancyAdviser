@@ -13,19 +13,28 @@ export default class Information extends React.Component{
     return (
       <View style={styles.container}>
         <View style={styles.header}> 
-          <Text style={styles.headerText}> INFORMATIONS </Text>
+          <Text style={styles.headerText}> Informations </Text>
         </View>
-        <TouchableOpacity style={styles.button} onPress={()=>navigate('homedetails')}>
-          <Text style={styles.buttonText}> รายละเอียด </Text>
+        <TouchableOpacity style={styles.button} onPress={()=>navigate('Details1')}>
+          <Text style={styles.buttonText}> ความสำคัญของการนับลูกดิ้น </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={()=>navigate('Details2')}>
+          <Text style={styles.buttonText}> อาการลูกดิ้นที่ผิดปกติ </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={()=>navigate('Details3')}>
+          <Text style={styles.buttonText}> รูปแบบการดิ้นของลูกในครรภ์ตามอายุครรภ์ </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={()=>navigate('Details4')}>
+          <Text style={styles.buttonText}> วิธีการนับลูกดิ้น </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={()=>navigate('Details5')}>
+          <Text style={styles.buttonText}> การแปลผลลูกดิ้น </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={()=>navigate('Musiclist')}>
-          <Text style={styles.buttonText}> เพลง </Text>
+          <Text style={styles.buttonText}> เพลงเสริมพัฒนาการ </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={()=>navigate('testlocal')}>
-          <Text style={styles.buttonText}> etc1 </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={()=>{Alert.alert("etc2")}}>
-          <Text style={styles.buttonText}> etc2 </Text>
+        <TouchableOpacity style={styles.button} onPress={()=>navigate('Callphone')}>
+          <Text style={styles.buttonText}> เบอร์โทรที่ใช้ติดต่อยามฉุกเฉิน </Text>
         </TouchableOpacity>
       </View>
     );
@@ -37,12 +46,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header:{
-    backgroundColor: '#E91E63',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },
   button:{
-    backgroundColor: "#00d0cb",
     borderWidth: 1,
     backgroundColor: '#00ffff',
     alignItems: 'center',
@@ -53,8 +61,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   headerText:{
-    color: 'white',
+    color: '#f5424e',
     fontSize: 18,
     padding: 15,
+  },
+  baseText: {
+    fontFamily: 'Cochin',
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 })

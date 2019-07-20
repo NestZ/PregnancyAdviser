@@ -4,11 +4,13 @@ import SoundPlayer from 'react-native-sound-player';
 
 export default class Musiclist extends React.Component   {
   playsound1(){
-    SoundPlayer.playSoundFile('baller','mp3')
-    SoundPlayer.setVolume(100)
+    SoundPlayer.playSoundFile('p1','ogg')
   }
   playsound2(){
-    SoundPlayer.playSoundFile('paenaijai','mp3')
+    SoundPlayer.playSoundFile('p2','ogg')
+  }
+  playsound3(){
+    SoundPlayer.playSoundFile('p3','ogg')
   }
   static navigationOptions = ({ navigation }) => {
     return {
@@ -21,23 +23,17 @@ export default class Musiclist extends React.Component   {
         <View style={styles.header}>
           <Text style={styles.headerText}> MUSICLIST </Text>
         </View>
-        <ScrollView>
+        <ScrollView style={styles.background}>
           <TouchableOpacity style={styles.button} onPress={()=>this.playsound1()}>
-            <Text style={styles.buttonText}> Baller </Text>
+            <Text style={styles.buttonText}> โมสาร์ท พัฒนาสมอง1 </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={()=>this.playsound2()}>
-            <Text style={styles.buttonText}> แผลในใจ </Text>
+            <Text style={styles.buttonText}> โมสาร์ท พัฒนาสมอง2 </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>null}>
-            <Text style={styles.buttonText}> ยังไม่มีเพลง1 </Text>
+          <TouchableOpacity style={styles.button} onPress={()=>this.playsound3()}>
+            <Text style={styles.buttonText}> โมสาร์ท พัฒนาสมอง3 </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>null}>
-            <Text style={styles.buttonText}> ยังไม่มีเพลง2 </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>null}>
-            <Text style={styles.buttonText}> ยังไม่มีเพลง3 </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>null}>
+          {/* <TouchableOpacity style={styles.button} onPress={()=>null}>
             <Text style={styles.buttonText}> ยังไม่มีเพลง4 </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={()=>null}>
@@ -57,7 +53,7 @@ export default class Musiclist extends React.Component   {
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={()=>null}>
             <Text style={styles.buttonText}> ยังไม่มีเพลง10 </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </ScrollView>
         <View style={styles.row}>
           <TouchableOpacity style={styles.button} onPress={()=>SoundPlayer.resume()}>
@@ -101,9 +97,8 @@ const styles = StyleSheet.create({
     zIndex:10,
   },
   button:{
-      backgroundColor: "#00d0cb",
       borderWidth: 1,
-      backgroundColor: '#00ffff',
+      backgroundColor: '#ffcc99',
       alignItems: 'center',
       padding: 10,
   },
@@ -112,75 +107,10 @@ const styles = StyleSheet.create({
   },
   row:{
     justifyContent: 'center',
-    backgroundColor: '#000000',
+    backgroundColor: '#ff6699',
     flexDirection: 'row',
+  },
+  background:{
+    backgroundColor: "#ff99cc",
   },
 })
-
-
-/*
-import SoundPlayer from 'react-native-sound-player'
-import React, {Component} from 'react';
-import {TouchableOpacity, StyleSheet, Text, View,} from 'react-native';
-const styles = StyleSheet.create({  
-  background:{
-    backgroundColor: "#ff0000",
-  },
-  button:{
-    backgroundColor: "#00d0cb",
-    borderWidth: 1,
-    padding: 10,
-    textAlign: 'left',
-    color: "#000000",
-  },
-  button1:{
-    borderWidth: 2,
-    padding: 10,
-    backgroundColor: "#00ecb5",
-    textAlign: 'center',
-    color: '#000000',
-  },
-  text:{
-    fontSize: 15,
-  },
-  row:{
-    justifyContent: 'center',
-    flexDirection: 'row',
-  }
-});
-class Musiclist extends React.Component{
-  playsound1(){
-    SoundPlayer.playSoundFile('baller','mp3')
-  }
-  playsound2(){
-    SoundPlayer.playSoundFile('paenaijai','mp3')
-  }
-  render() {
-    return (
-      <View style={styles.background}>
-        <View>
-          <TouchableOpacity style={styles.button} onPress={()=>this.playsound1()}>
-            <Text style={styles.text}> Baller </Text>
-          </TouchableOpacity>
-        </View>
-        <View>
-          <TouchableOpacity style={styles.button} onPress={()=>this.playsound2()}>
-            <Text style={styles.text}> แผลในใจ </Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.row}>
-          <TouchableOpacity style={styles.button1} onPress={()=>SoundPlayer.resume()}>
-            <Text style={styles.text}> RESUME </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button1} onPress={()=>SoundPlayer.pause()}>
-            <Text style={styles.text}> PAUSE </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button1} onPress={()=>SoundPlayer.stop()}>
-            <Text style={styles.text}> STOP</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  }
-}
-export default Musiclist; */

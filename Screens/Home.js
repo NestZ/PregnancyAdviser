@@ -64,14 +64,14 @@ const styles = StyleSheet.create({
      elevation: 5
    },
    Alert_Title:{
-     fontSize: 25, 
+     fontSize: 24, 
      color: "#fff",
      textAlign: 'center',
      padding: 10,
      height: '28%'
    },
    Alert_Message:{
-       fontSize: 22, 
+       fontSize: 21, 
        color: "#fff",
        textAlign: 'center',
        padding: 10,
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
    TextStyle:{
        color:'#fff',
        textAlign:'center',
-       fontSize: 22,
+       fontSize: 21,
        marginTop: -5
    }
 });
@@ -104,6 +104,9 @@ class Home extends React.Component{
     this.setThisCount();
   }
   render() {
+    let alertTitle = "ยินดีด้วย !!";
+    let alertMessage = "ลูกในท้องมีสุขภาพอยู่ในเกณฑ์ปกติ\nมีพัฒนาการ การเจริญเติบโตที่ดี";
+    let ok = "ตกลง";
     return (
       <View style={styles.container}>
         <Modal
@@ -113,16 +116,16 @@ class Home extends React.Component{
           onRequestClose={() => { this.Show_Custom_Alert(!this.state.Alert_Visibility)}}>
             <View style={{ flex:1, alignItems: 'center', justifyContent: 'center' }}>
               <View style={styles.Alert_Main_View}>
-                  <Text style={styles.Alert_Title}>Custom Alert Dialog Title.</Text>
+                  <Text style={styles.Alert_Title}>{alertTitle}</Text>
                   <View style={{ width: '100%', height: 2, backgroundColor: '#fff'}}/>
-                  <Text style={styles.Alert_Message}> Are You Sure(Alert Dialog Message). </Text>
+                  <Text style={styles.Alert_Message}>{alertMessage}</Text>
                   <View style={{ width: '100%', height: 1, backgroundColor: '#fff'}}/>
                   <View style={{height: '30%',width: '100%'}}>
                     <TouchableOpacity
                       style={styles.buttonStyle}
                       onPress={() => this.Show_Custom_Alert(!this.state.Alert_Visibility)}
                       activeOpacity={0.7}>
-                      <Text style={styles.TextStyle}>OK</Text>
+                      <Text style={styles.TextStyle}>{ok}</Text>
                     </TouchableOpacity>
                   </View>
               </View>
@@ -139,10 +142,9 @@ class Home extends React.Component{
           </TouchableOpacity>
         </View>
         <TouchableOpacity style={styles.minusButton} onPress={() => this.minusCounter()}>
-          <Text style={styles.minusButtonText}>Delete 1</Text>
+          <Text style={styles.minusButtonText}>ลบ 1</Text>
         </TouchableOpacity>
-        <Button onPress={() => this.Show_Custom_Alert(true)} title="Click Here To Show Custom Alert Dialog"/>
-        <Button onPress={() => Notification.create({ subject: 'Hey', message: 'Yo! Hello world.' })} title="kuy"/>
+        {/*<Button onPress={() => Notification.create({ subject: 'Hey', message: 'Yo! Hello world.' })} title="kuy"/> */}
       </View>
     );
   }
@@ -155,9 +157,10 @@ class Home extends React.Component{
     let data = JSON.parse(existingData);
     if(data != null){
       var size = Object.keys(data).length;
-      if(data[size - 1].dateNo === nowDate && data[size - 1].currCount > 0){
+      if(data[size - 1].dateNo == nowDate && data[size - 1].currCount > 0){
         if(data[size - 1].currCount === 1){
-          data.pop();
+          if(size == 1)data = null;
+          else data.pop();
         }
         else{
           data[size - 1].time.pop();
@@ -191,6 +194,7 @@ class Home extends React.Component{
     });
   }
   pushData = async() => {
+    var size;
     var nowDate = new Date().getDate();
     const dataToBeSaved = {
       currCount : 1,
@@ -202,7 +206,7 @@ class Home extends React.Component{
     const existingData = await AsyncStorage.getItem('timedata')
     let newData = JSON.parse(existingData);
     if(newData != null){
-      var size = Object.keys(newData).length;
+      size = Object.keys(newData).length;
     }
     if(newData == null){
       newData = [];
@@ -211,6 +215,7 @@ class Home extends React.Component{
     else if(newData[size - 1].dateNo === nowDate){
       newData[size - 1].time.push(this.state.time);
       newData[size - 1].currCount = newData[size - 1].currCount + 1;
+      if(newData[size - 1].currCount == 10)this.Show_Custom_Alert(true);
     }
     else if(newData[size - 1].dateNo != nowDate){
       newData.push(dataToBeSaved);
@@ -223,12 +228,12 @@ class Home extends React.Component{
   }
   setThisCount = async() => {
     const rawData = await AsyncStorage.getItem('timedata')
-    let newData = JSON.parse(rawData);
-    if(newData != null){
-      var size = Object.keys(newData).length;
+    let realData = JSON.parse(rawData);
+    if(realData != null){
+      var size = Object.keys(realData).length;
       var nowDate = new Date().getDate();
-      if(newData[size - 1].currCount > 0 && newData[size - 1].dateNo === nowDate){
-        this.setState({thisCount:String(newData[size - 1].currCount)});
+      if(realData[size - 1].currCount > 0 && realData[size - 1].dateNo == nowDate){
+        this.setState({thisCount:String(realData[size - 1].currCount)});
       }
       else this.setState({thisCount:'0'});
     }

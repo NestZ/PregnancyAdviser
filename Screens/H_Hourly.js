@@ -21,9 +21,26 @@ const styles = StyleSheet.create({
       padding: 15
     },
     scrollContainer:{
-      flex: 1,
-      marginBottom : 120
+      flex: 1
     },
+    resContainer:{
+      backgroundColor: '#fffdd1',
+      height: 100,
+      width: '100%',
+      borderTopLeftRadius: 10,
+      borderTopRightRadius: 10,
+      elevation: 25
+    },
+    resHeader:{
+      fontSize: 16,
+      padding: 5,
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    resText:{
+      fontSize: 16,
+      padding: 15
+    }
 })
 
 class History_Hourly extends React.Component{
@@ -37,7 +54,7 @@ class History_Hourly extends React.Component{
     }
     this.setArr(this.state.currIndex);
     this.props.navigation.addListener('willFocus',this.updateArr.bind(this));
-    this.props.navigation.addListener('willBlur',() => {this.props.navigation.dispatch(StackActions.popToTop())});
+    //this.props.navigation.addListener('willBlur',() => {this.props.navigation.dispatch(StackActions.popToTop())});
   }
   static navigationOptions = ({ navigation }) => {
     return {
@@ -45,9 +62,17 @@ class History_Hourly extends React.Component{
     } 
   }
   render(){
+    let s;
+    let keyIndex;
     let timeList = this.state.timeArr.map((val,key) =>{
+      keyIndex = key;
       return <List key={key} keyval={key} val={val}></List>
     });
+    let len = this.state.timeArr.length;
+    //if(keyIndex != len - 1){
+      if(len >= 10)s = "ยินดีด้วย!! ลูกในท้องมีสุขภาพอยู่ในเกณฑ์ปกติ\nมีพัฒนาการ การเจริญเติบโตที่ดี";
+      else s = "ลูกในท้องมีความผิดปกติ ควรรีบมาพบแพทย์";
+    //}
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -56,6 +81,10 @@ class History_Hourly extends React.Component{
         <ScrollView style={styles.scrollContainer}>
           {timeList}
         </ScrollView>
+        <View style={styles.resContainer}>
+          {/* <Text style={styles.resHeader}>-แปลผล-</Text> */}
+          <Text style={styles.resText}>{s}</Text>
+        </View>
       </View>
     );
   }

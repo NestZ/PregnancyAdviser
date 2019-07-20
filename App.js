@@ -1,14 +1,14 @@
 import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
 import Home from './Screens/Home';
 import History from './Screens/H_MainNav';
-import gotoInformation from './Screens/gotoinformation';
+import Information from './Screens/Details';
 import {Icon} from 'react-native-elements';
 import React, {Component} from 'react';
 
 const TabNavigator =  createBottomTabNavigator({
   Home : Home,
   History : History,
-  gotoInformation : gotoInformation,
+  Information : Information,
 },
 {
   defaultNavigationOptions : ({ navigation }) => ({
@@ -21,7 +21,7 @@ const TabNavigator =  createBottomTabNavigator({
       else if(routeName === 'History'){
         iconName = "history";
       }
-      else if(routeName === 'gotoInformation'){
+      else if(routeName === 'Information'){
         iconName = "list";
       }
       return (<Icon
