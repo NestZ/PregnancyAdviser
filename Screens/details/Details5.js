@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 
 class Details5 extends React.Component{
   static navigationOptions = ({ navigation }) => {
@@ -10,6 +10,10 @@ class Details5 extends React.Component{
   render() {
   const {navigate} = this.props.navigation;
   return (
+  <ImageBackground
+    style={{width: '100%', height: '100%'}}
+    source={require('../img/a.png')}
+>
     <View>
       <View style={styles.header}> 
           <Text style={styles.headerText}> การแปลผลลูกดื้น </Text>
@@ -19,6 +23,7 @@ class Details5 extends React.Component{
 	    <Text style={styles.Text}>ชั่วโมง หากลูกยังดิ้นน้อยกว่า 10 ครั้ง ใน 12 ชั่วโมง </Text>
       <Text style={styles.Text}>แสดงว่าลูกในท้องมีความผิดปกติควรรีบมาพบแพทย์ (แปลผล) </Text>
     </View>
+  </ImageBackground>
   );
   }
 }
