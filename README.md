@@ -24,3 +24,5 @@ Credits
 
 Roundicons
 Lucy G
+
+Freepik
