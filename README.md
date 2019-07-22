@@ -18,6 +18,8 @@ react-native link react-native-vector-icons
 
 npm install --save react-native-elements
 
+npm i react-native-local-notifications
+
 Credits
 
 Roundicons
