@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View, ScrollView, Alert} from 'react-native';
 import React, {Component} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import { StackActions } from 'react-navigation';
+import { StackActions } from 'react-navigation'
 import List from './H_Hourly_S';
 
 const styles = StyleSheet.create({
@@ -54,16 +54,14 @@ class History_Hourly extends React.Component{
     }
     this.setArr(this.state.currIndex);
     this.props.navigation.addListener('willFocus',this.updateArr.bind(this));
-    //this.props.navigation.addListener('willBlur',() => {this.props.navigation.dispatch(StackActions.popToTop())});
   }
   static navigationOptions = ({ navigation }) => {
     return {
       header: () => null
-    } 
+    }
   }
   render(){
     let s;
-    let keyIndex;
     let timeList = this.state.timeArr.map((val,key) =>{
       keyIndex = key;
       return <List key={key} keyval={key} val={val}></List>

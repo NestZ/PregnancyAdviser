@@ -33,4 +33,14 @@ const StackNavigator =  createStackNavigator({
   History_Hourly : History_Hourly
 },{ transitionConfig:NavigationConfig });
 
+StackNavigator.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+  return {
+    tabBarVisible,
+  };
+};
+
 export default createAppContainer(StackNavigator);

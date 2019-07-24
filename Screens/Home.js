@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, TouchableOpacity, ImageBackground, Modal, Button
 import { DeviceEventEmitter } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Notification from 'react-native-android-local-notification';
+import { Image } from 'react-native-elements';
 
 const styles = StyleSheet.create({
   container:{
@@ -88,6 +89,12 @@ const styles = StyleSheet.create({
        textAlign:'center',
        fontSize: 21,
        marginTop: -5
+   },
+   InfoIconContainer:{
+     alignItems: 'flex-end',
+     justifyContent: 'flex-end',
+     paddingTop: 20,
+     paddingRight: 20
    }
 });
 
@@ -99,7 +106,8 @@ class Home extends React.Component{
       date : '',
       time : '',
       thisCount : 0,
-      Alert_Visibility: false
+      Alert_Visibility: false,
+      Info_Visibility: false
     }
     this.setThisCount();
   }
@@ -107,6 +115,8 @@ class Home extends React.Component{
     let alertTitle = "ยินดีด้วย !!";
     let alertMessage = "ลูกในท้องมีสุขภาพอยู่ในเกณฑ์ปกติ\nมีพัฒนาการ การเจริญเติบโตที่ดี";
     let ok = "ตกลง";
+    let infoTitle = "คำแนะนำ";
+    let infoMessage = "";
     return (
       <View style={styles.container}>
         <Modal
@@ -131,8 +141,35 @@ class Home extends React.Component{
               </View>
             </View>
         </Modal>
+        <Modal
+          visible={this.state.Info_Visibility}
+          transparent={true}
+          animationType={"fade"}
+          onRequestClose={() => { this.Show_Info_Alert(!this.state.Info_Visibility)}}>
+            <View style={{ flex:1, alignItems: 'center', justifyContent: 'center' }}>
+              <View style={styles.Alert_Main_View}>
+                  <Text style={styles.Alert_Title}>{infoTitle}</Text>
+                  <View style={{ width: '100%', height: 2, backgroundColor: '#fff'}}/>
+                  <Text style={styles.Alert_Message}>{infoMessage}</Text>
+                  <View style={{ width: '100%', height: 1, backgroundColor: '#fff'}}/>
+                  <View style={{height: '30%',width: '100%'}}>
+                    <TouchableOpacity
+                      style={styles.buttonStyle}
+                      onPress={() => this.Show_Info_Alert(!this.state.Info_Visibility)}
+                      activeOpacity={0.7}>
+                      <Text style={styles.TextStyle}>{ok}</Text>
+                    </TouchableOpacity>
+                  </View>
+              </View>
+            </View>
+        </Modal>
         <View style={styles.header}>
           <Text style={styles.headerText}>Home</Text>
+        </View>
+        <View style={styles.InfoIconContainer}>
+          <TouchableOpacity onPress={() => this.Show_Info_Alert(true)}>
+            <Image source={require('./img/icon.png')} style={{height:35, width:35}}/>
+          </TouchableOpacity>
         </View>
         <View style={styles.iconContainer}>
           <TouchableOpacity onPress={() => this.plusCounter()}>
@@ -150,6 +187,9 @@ class Home extends React.Component{
   }
   Show_Custom_Alert(visible){
     this.setState({Alert_Visibility:visible});
+  }
+  Show_Info_Alert(visible){
+    this.setState({Info_Visibility:visible});
   }
   minusCounter = async() => {
     var nowDate = new Date().getDate();
