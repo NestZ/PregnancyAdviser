@@ -2,36 +2,7 @@ import {StyleSheet, Text, View, TouchableOpacity, ScrollView} from 'react-native
 import React, {Component} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import List from './H_Diary_S';
-
-const styles = StyleSheet.create({
-    container:{
-      flex:1
-    },
-    header:{
-      backgroundColor: 'white',
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderBottomWidth: 3,
-      borderBottomColor: '#ddd'
-    },
-    headerText:{
-      color: '#f5424e',
-      fontSize: 20,
-      padding: 13
-    },
-    scrollContainer:{
-      flex: 1
-    },
-    nullList:{
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    nullListText:{
-      color: '#8f8f8f',
-      fontSize: 23,
-      paddingTop: 200
-    }
-})
+import styles from './styles';
 
 class History_Diary extends React.Component{
   constructor(props){
@@ -57,14 +28,14 @@ class History_Diary extends React.Component{
       return <TouchableOpacity key={key} onPress={() => navigate('History_Hourly',{Index:key})}><List keyval={key} val={val}></List></TouchableOpacity>
     });
     return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>History</Text>
+      <View style={styles.diaryContainer}>
+        <View style={styles.diaryHeader}>
+          <Text style={styles.diaryHeaderText}>History</Text>
         </View>
         <View style={styles.nullList}>
           {this.checkNullList()}
         </View>
-        <ScrollView style={styles.scrollContainer}>
+        <ScrollView style={styles.diaryScrollContainer}>
           {dateList}
         </ScrollView>
       </View>

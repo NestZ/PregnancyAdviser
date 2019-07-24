@@ -1,47 +1,8 @@
 import {StyleSheet, Text, View, ScrollView, Alert} from 'react-native';
 import React, {Component} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import { StackActions } from 'react-navigation'
 import List from './H_Hourly_S';
-
-const styles = StyleSheet.create({
-    container:{
-      flex:1
-    },
-    header:{
-      backgroundColor: '#E91E63',
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderBottomWidth: 5,
-      borderBottomColor: '#ddd'
-    },
-    headerText:{
-      color: 'white',
-      fontSize: 18,
-      padding: 15
-    },
-    scrollContainer:{
-      flex: 1
-    },
-    resContainer:{
-      backgroundColor: '#fffdd1',
-      height: 100,
-      width: '100%',
-      borderTopLeftRadius: 10,
-      borderTopRightRadius: 10,
-      elevation: 25
-    },
-    resHeader:{
-      fontSize: 16,
-      padding: 5,
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    resText:{
-      fontSize: 16,
-      padding: 15
-    }
-})
+import styles from './styles';
 
 class History_Hourly extends React.Component{
   constructor(props){
@@ -73,8 +34,8 @@ class History_Hourly extends React.Component{
     //}
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>Date</Text>
+        <View style={styles.hourHeader}>
+          <Text style={styles.hourHeaderText}>Date</Text>
         </View>
         <ScrollView style={styles.scrollContainer}>
           {timeList}
