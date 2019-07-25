@@ -18,7 +18,7 @@ react-native link react-native-vector-icons
 
 npm install --save react-native-elements
 
-npm i react-native-local-notifications
+npm install react-native-android-local-notification --save
 
 Credits
 
