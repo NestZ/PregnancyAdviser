@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, TouchableOpacity, ImageBackground, Modal} from 'react-native';
+import {Text, View, TouchableOpacity, ImageBackground, Modal, Button, Alert} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Notification from 'react-native-android-local-notification';
 import { Image } from 'react-native-elements';
@@ -17,6 +17,7 @@ class Home extends React.Component{
       Info_Visibility: false
     }
     this.setThisCount();
+    if(this.checkNoti())this.createDiaryNoti();
   }
   render() {
     let alertTitle = "ยินดีด้วย !!";
@@ -88,9 +89,86 @@ class Home extends React.Component{
         <TouchableOpacity style={styles.minusButton} onPress={() => this.minusCounter()}>
           <Text style={styles.minusButtonText}>ลบ 1</Text>
         </TouchableOpacity>
-        {/*<Button onPress={() => Notification.create({ subject: 'Hey', message: 'Yo! Hello world.' })} title="kuy"/> */}
+        {/* <Button onPress={() => this.test()} title="create Noti S"/>
+        <Button onPress={() => this.test2()} title="create Noti S2"/>
+        <Button onPress={() => this.checkNoti()} title="check Noti"/>
+        <Button onPress={() => Notification.deleteAll()} title="del Noti"/> */}
       </View>
     );
+  }
+  // test2(){
+  //   var date = new Date().getDate();
+  //   var month = new Date().getMonth();
+  //   var year = new Date().getFullYear();
+  //   var hour = new Date().getHours();
+  //   var minute = new Date().getMinutes();
+  //   hour += 1;
+  //   Notification.create({
+  //     id: 1,
+  //     subject: 'Notification With Payload',
+  //     message: 'This is a notification that contains custom payload.',
+  //     sendAt: new Date(year, month, date, hour, minute)
+  //   });
+  // }
+  // test(){
+  //   var date = new Date().getDate();
+  //   var month = new Date().getMonth();
+  //   var year = new Date().getFullYear();
+  //   var hour = new Date().getHours();
+  //   var minute = new Date().getMinutes();
+  //   minute += 1;
+  //   Notification.create({
+  //     id: 2,
+  //     subject: 'Notification With Payload',
+  //     message: 'This is a notification that contains custom payload.',
+  //     sendAt: new Date(year, month, date, hour, minute),
+  //     repeatEvery: 60000,
+  //     repeatCount: 10
+  //   });
+  // }
+  checkNoti(){
+    let len = Notification.getIDs().then(function(ids){
+      return ids.length;
+    });
+    return len;
+  }
+  createDiaryNoti(){
+    var date = new Date().getDate();
+    var month = new Date().getMonth();
+    var year = new Date().getFullYear();
+    var hour = new Date().getHours();
+    var minute = new Date().getMinutes();
+    if(hour + 12 >= 24){
+      hour = 23;
+      minute = 59;
+    }
+    else hour += 12;
+    Notification.create({
+      id: 1,
+      subject: 'Scheduled Notification',
+      message: 'กดไม่ถึงใน 12 ชม.',
+      sendAt: new Date(year, month, date, hour, minute),
+      repeatEvery: 'day',
+      repeatCount: 300
+    });
+  }
+  createHalfHourNoti(){
+    var date = new Date().getDate();
+    var month = new Date().getMonth();
+    var year = new Date().getFullYear();
+    var hour = new Date().getHours();
+    var minute = new Date().getMinutes();
+    if((minute + 30) / 60 === 1){
+      if(hour < 23)hour++;
+      else hour = 23;
+    }
+    minute = (minute + 30) % 60;
+    Notification.create({
+      id: 2,
+      subject: 'Scheduled Notification',
+      message: 'กดไม่ถึงในครึ่งชม.',
+      sendAt: new Date(year, month, date, hour, minute)
+    });
   }
   Show_Custom_Alert(visible){
     this.setState({Alert_Visibility:visible});
@@ -108,6 +186,8 @@ class Home extends React.Component{
         if(data[size - 1].currCount === 1){
           if(size == 1)data = null;
           else data.pop();
+          Notification.deleteAll();
+          this.createDiaryNoti();
         }
         else{
           data[size - 1].time.pop();
@@ -162,7 +242,15 @@ class Home extends React.Component{
     else if(newData[size - 1].dateNo === nowDate){
       newData[size - 1].time.push(this.state.time);
       newData[size - 1].currCount = newData[size - 1].currCount + 1;
-      if(newData[size - 1].currCount == 10)this.Show_Custom_Alert(true);
+      if(newData[size - 1].currCount == 10){
+        this.Show_Custom_Alert(true);
+        Notification.deleteAll();
+      }
+      if(newData[size - 1].currCount == 1){
+        Notification.deleteAll();
+        this.createDiaryNoti();
+        this.createHalfHourNoti();
+      }
     }
     else if(newData[size - 1].dateNo != nowDate){
       newData.push(dataToBeSaved);
