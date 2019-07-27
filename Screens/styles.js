@@ -51,36 +51,51 @@ const styles = StyleSheet.create({
     Alert_Main_View:{
        alignItems: 'center',
        justifyContent: 'center',
-       backgroundColor : "#f5424e",
-       height: 200 ,
+       backgroundColor : "#00c853",
+       height: 300 ,
        width: '90%',
-       borderWidth: 1,
-       borderColor: '#fff',
-       borderRadius:7,
+       borderRadius: 25,
        elevation: 5
     },
-    Alert_Title:{
-       fontSize: 24, 
-       color: "#fff",
-       textAlign: 'center',
-       padding: 10,
-       height: '28%'
+    Info_Main_View:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor : "#00c853",
+        height: 400 ,
+        width: '90%',
+        borderRadius: 25,
+        elevation: 5
     },
     Alert_Message:{
-         fontSize: 21, 
-         color: "#fff",
-         textAlign: 'center',
-         padding: 10,
-         height: '42%'
+        fontSize: 21, 
+        color: "#fff",
+        textAlign: 'center',
+        padding: 10
     },
-    buttonStyle: {
-         width: '100%',
-         height: '100%',
-         justifyContent: 'center',
-         alignItems: 'center'
+    infoHeader:{
+        fontSize: 27, 
+        color: "#fff",
+        textAlign: 'center',
+        paddingTop: 10
+    },
+    buttonStyle:{
+        width: '80%',
+        height: '80%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        borderRadius: 40
+    },
+    infoButtonStyle:{
+        width: '80%',
+        height: '65%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        borderRadius: 40
     },
     TextStyle:{
-         color:'#fff',
+         color:'#00c853',
          textAlign:'center',
          fontSize: 21,
          marginTop: -5

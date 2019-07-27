@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, TouchableOpacity, ImageBackground, Modal, Button, Alert} from 'react-native';
+import {Text, View, TouchableOpacity, ImageBackground, Modal} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Notification from 'react-native-android-local-notification';
 import { Image } from 'react-native-elements';
@@ -20,11 +20,10 @@ class Home extends React.Component{
     if(this.checkNoti())this.createDiaryNoti();
   }
   render() {
-    let alertTitle = "ยินดีด้วย !!";
     let alertMessage = "ลูกในท้องมีสุขภาพอยู่ในเกณฑ์ปกติ\nมีพัฒนาการ การเจริญเติบโตที่ดี";
     let ok = "ตกลง";
-    let infoTitle = "คำแนะนำ";
-    let infoMessage = "";
+    let infoHeader = "วิธีการใช้งาน";
+    let infoMessage = "กดปุ่มตรงกลางหน้าจอ 1 ครั้ง เมื่อลูกดิ้น ถ้าหากกดผิดสามารถกดปุ่ม \"ลบ 1\" ได้\n";
     return (
       <View style={styles.container}>
         <Modal
@@ -34,11 +33,11 @@ class Home extends React.Component{
           onRequestClose={() => { this.Show_Custom_Alert(!this.state.Alert_Visibility)}}>
             <View style={{ flex:1, alignItems: 'center', justifyContent: 'center' }}>
               <View style={styles.Alert_Main_View}>
-                  <Text style={styles.Alert_Title}>{alertTitle}</Text>
-                  <View style={{ width: '100%', height: 2, backgroundColor: '#fff'}}/>
-                  <Text style={styles.Alert_Message}>{alertMessage}</Text>
-                  <View style={{ width: '100%', height: 1, backgroundColor: '#fff'}}/>
-                  <View style={{height: '30%',width: '100%'}}>
+                  <View style={{height: '75%',width: '100%', alignItems: 'center', justifyContent: 'center'}}>
+                    <Image source={require('./img/Smile.png')} style={{width: 100, height: 100}}/>
+                    <Text style={styles.Alert_Message}>{alertMessage}</Text>
+                  </View>
+                  <View style={{height: '25%',width: '100%', alignItems: 'center', justifyContent: 'center', paddingBottom: 15}}>
                     <TouchableOpacity
                       style={styles.buttonStyle}
                       onPress={() => this.Show_Custom_Alert(!this.state.Alert_Visibility)}
@@ -55,14 +54,17 @@ class Home extends React.Component{
           animationType={"fade"}
           onRequestClose={() => { this.Show_Info_Alert(!this.state.Info_Visibility)}}>
             <View style={{ flex:1, alignItems: 'center', justifyContent: 'center' }}>
-              <View style={styles.Alert_Main_View}>
-                  <Text style={styles.Alert_Title}>{infoTitle}</Text>
-                  <View style={{ width: '100%', height: 2, backgroundColor: '#fff'}}/>
-                  <Text style={styles.Alert_Message}>{infoMessage}</Text>
-                  <View style={{ width: '100%', height: 1, backgroundColor: '#fff'}}/>
-                  <View style={{height: '30%',width: '100%'}}>
+              <View style={styles.Info_Main_View}>
+                  <View style={{height: '15%', width:'100%', alignItems: 'center', justifyContent: 'center'}}>
+                    <Text style={styles.infoHeader}>{infoHeader}</Text>
+                  </View>
+                  <View style={{height: '60%',width: '100%', alignItems: 'center', justifyContent: 'center'}}>
+                    <Text style={styles.Alert_Message}>{infoMessage}</Text>
+                    <Image source={require('./img/Info.png')} style={{width: 100, height: 100}}/>
+                  </View>
+                  <View style={{height: '25%',width: '100%', alignItems: 'center', justifyContent: 'center', paddingBottom: 15}}>
                     <TouchableOpacity
-                      style={styles.buttonStyle}
+                      style={styles.infoButtonStyle}
                       onPress={() => this.Show_Info_Alert(!this.state.Info_Visibility)}
                       activeOpacity={0.7}>
                       <Text style={styles.TextStyle}>{ok}</Text>
@@ -89,43 +91,9 @@ class Home extends React.Component{
         <TouchableOpacity style={styles.minusButton} onPress={() => this.minusCounter()}>
           <Text style={styles.minusButtonText}>ลบ 1</Text>
         </TouchableOpacity>
-        {/* <Button onPress={() => this.test()} title="create Noti S"/>
-        <Button onPress={() => this.test2()} title="create Noti S2"/>
-        <Button onPress={() => this.checkNoti()} title="check Noti"/>
-        <Button onPress={() => Notification.deleteAll()} title="del Noti"/> */}
       </View>
     );
   }
-  // test2(){
-  //   var date = new Date().getDate();
-  //   var month = new Date().getMonth();
-  //   var year = new Date().getFullYear();
-  //   var hour = new Date().getHours();
-  //   var minute = new Date().getMinutes();
-  //   hour += 1;
-  //   Notification.create({
-  //     id: 1,
-  //     subject: 'Notification With Payload',
-  //     message: 'This is a notification that contains custom payload.',
-  //     sendAt: new Date(year, month, date, hour, minute)
-  //   });
-  // }
-  // test(){
-  //   var date = new Date().getDate();
-  //   var month = new Date().getMonth();
-  //   var year = new Date().getFullYear();
-  //   var hour = new Date().getHours();
-  //   var minute = new Date().getMinutes();
-  //   minute += 1;
-  //   Notification.create({
-  //     id: 2,
-  //     subject: 'Notification With Payload',
-  //     message: 'This is a notification that contains custom payload.',
-  //     sendAt: new Date(year, month, date, hour, minute),
-  //     repeatEvery: 60000,
-  //     repeatCount: 10
-  //   });
-  // }
   checkNoti(){
     let len = Notification.getIDs().then(function(ids){
       return ids.length;
@@ -158,7 +126,7 @@ class Home extends React.Component{
     var year = new Date().getFullYear();
     var hour = new Date().getHours();
     var minute = new Date().getMinutes();
-    if((minute + 30) / 60 === 1){
+    if((minute + 30) / 60){
       if(hour < 23)hour++;
       else hour = 23;
     }
