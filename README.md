@@ -23,7 +23,11 @@ npm install react-native-android-local-notification --save
 Credits
 
 Roundicons
+
 Lucy G
 
 Freepik
+
 Google
+
+Kiranshastry
