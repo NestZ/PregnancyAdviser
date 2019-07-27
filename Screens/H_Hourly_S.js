@@ -1,5 +1,5 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {Component} from 'react';
+import {Text, View} from 'react-native';
+import React from 'react';
 import styles from './styles';
 
 class H_Hourly_S extends React.Component{

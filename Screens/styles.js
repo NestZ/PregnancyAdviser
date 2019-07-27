@@ -49,13 +49,13 @@ const styles = StyleSheet.create({
       fontSize: 16
     },
     Alert_Main_View:{
-       alignItems: 'center',
-       justifyContent: 'center',
-       backgroundColor : "#00c853",
-       height: 300 ,
-       width: '90%',
-       borderRadius: 25,
-       elevation: 5
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor : "#00c853",
+        height: 300 ,
+        width: '90%',
+        borderRadius: 25,
+        elevation: 5
     },
     Info_Main_View:{
         alignItems: 'center',
@@ -124,14 +124,6 @@ const styles = StyleSheet.create({
     scrollContainer:{
         flex: 1
     },
-    resContainer:{
-        backgroundColor: '#fffdd1',
-        height: 100,
-        width: '100%',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-        elevation: 25
-    },
     resHeader:{
         fontSize: 16,
         padding: 5,
@@ -139,7 +131,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     resText:{
-        fontSize: 16,
+        fontSize: 18,
         padding: 15
     },
     list:{

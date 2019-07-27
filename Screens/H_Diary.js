@@ -1,5 +1,5 @@
-import {StyleSheet, Text, View, TouchableOpacity, ScrollView} from 'react-native';
-import React, {Component} from 'react';
+import {Text, View, TouchableOpacity, ScrollView} from 'react-native';
+import React from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import List from './H_Diary_S';
 import styles from './styles';

@@ -1,5 +1,5 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
-import React, {Component} from 'react';
+import {Text, View, Image} from 'react-native';
+import React from 'react';
 import styles from './styles';
 
 class H_Diary_S extends React.Component{

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Text, View, TouchableOpacity, ImageBackground, Modal} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Notification from 'react-native-android-local-notification';

@@ -1,7 +1,7 @@
 import {createBottomTabNavigator, createAppContainer, createStackNavigator} from 'react-navigation';
 import Home from './Screens/Home';
 import {Icon} from 'react-native-elements';
-import React, {Component} from 'react';
+import React from 'react';
 import History_Diary from './Screens/H_Diary';
 import History_Hourly from './Screens/H_Hourly';
 import Info from './Screens/Information';
@@ -33,7 +33,6 @@ const NavigationConfig = () => {
       const scene = sceneProps.scene;
       const index = scene.index;
       const width = sceneProps.layout.initWidth;
-
       return rightTransition(index, position, width);
     }
   }

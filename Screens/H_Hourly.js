@@ -1,5 +1,5 @@
-import {StyleSheet, Text, View, ScrollView, Alert} from 'react-native';
-import React, {Component} from 'react';
+import {Text, View, ScrollView} from 'react-native';
+import React from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import List from './H_Hourly_S';
 import styles from './styles';
@@ -23,15 +23,27 @@ class History_Hourly extends React.Component{
   }
   render(){
     let s;
+    let keyIndex;
+    let color;
     let timeList = this.state.timeArr.map((val,key) =>{
       keyIndex = key;
       return <List key={key} keyval={key} val={val}></List>
     });
     let len = this.state.timeArr.length;
-    //if(keyIndex != len - 1){
-      if(len >= 10)s = "ยินดีด้วย!! ลูกในท้องมีสุขภาพอยู่ในเกณฑ์ปกติ\nมีพัฒนาการ การเจริญเติบโตที่ดี";
-      else s = "ลูกในท้องมีความผิดปกติ ควรรีบมาพบแพทย์";
-    //}
+    if(keyIndex != len - 1){
+      if(len >= 10){
+        s = "ลูกในท้องมีสุขภาพอยู่ในเกณฑ์ปกติ";
+        color = '#4ede72';
+      }
+      else{
+        s = "ลูกในท้องมีความผิดปกติ ควรรีบมาพบแพทย์!!";
+        color = '#ff5757';
+      }
+    }
+    else{
+      s = "-ยังไม่ครบ 1 วัน-";
+      color = '#4ede72';
+    }
     return (
       <View style={styles.container}>
         <View style={styles.hourHeader}>
@@ -40,8 +52,14 @@ class History_Hourly extends React.Component{
         <ScrollView style={styles.scrollContainer}>
           {timeList}
         </ScrollView>
-        <View style={styles.resContainer}>
-          {/* <Text style={styles.resHeader}>-แปลผล-</Text> */}
+        <View style={{backgroundColor: color,
+                      height: 80,
+                      width: '100%',
+                      borderTopLeftRadius: 10,
+                      borderTopRightRadius: 10,
+                      elevation: 25,
+                      alignItems: 'center',
+                      justifyContent: 'center'}}>
           <Text style={styles.resText}>{s}</Text>
         </View>
       </View>
