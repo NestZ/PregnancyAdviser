@@ -41,8 +41,22 @@ class History_Hourly extends React.Component{
       }
     }
     else{
-      s = "-ยังไม่ครบ 1 วัน-";
-      color = '#4ede72';
+      let temp = this.state.timeArr[0];
+      let times = temp[0] + temp[1];
+      var nowHour = new Date().getHours();
+      let pastTime = nowHour - times;
+      if(len < 10 && pastTime < 12){
+        s = "ให้นับต่อไปจนครบ 12 ชั่วโมง";
+        color = '#4ede72';
+      }
+      else if(len < 10 && pastTime >= 12){
+        s = "ลูกในท้องมีความผิดปกติ ควรรีบมาพบแพทย์!!";
+        color = '#ff5757';
+      }
+      else if(len >= 10){
+        s = "ลูกในท้องมีสุขภาพอยู่ในเกณฑ์ปกติ";
+        color = '#4ede72';
+      }
     }
     return (
       <View style={styles.container}>
@@ -74,7 +88,7 @@ class History_Hourly extends React.Component{
     this.setState({timeArr:newData[index].time});
   }
   getDataWithKey = async(key) => {
-    try {
+    try{
       const data = await AsyncStorage.getItem(key)
       var newData = JSON.parse(data);
       return newData;

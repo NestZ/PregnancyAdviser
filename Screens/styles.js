@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         elevation: 5
     },
     Alert_Message:{
-        fontSize: 21, 
+        fontSize: 19, 
         color: "#fff",
         textAlign: 'center',
         padding: 10
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
-        width: 40,
+        width: 45,
         height: 25,
         backgroundColor: '#E91E63',
         borderRadius: 50,

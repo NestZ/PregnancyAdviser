@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TouchableOpacity, ImageBackground, Modal} from 'react-native';
+import {Text, View, TouchableOpacity, ImageBackground, Modal, Alert} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Notification from 'react-native-android-local-notification';
 import { Image } from 'react-native-elements';
@@ -113,8 +113,8 @@ class Home extends React.Component{
     else hour += 12;
     Notification.create({
       id: 1,
-      subject: 'Scheduled Notification',
-      message: 'กดไม่ถึงใน 12 ชม.',
+      subject: 'คำเตือน!!',
+      message: 'ลูกของคุณดิ้นไม่ถึง 10 ครั้ง ใน 12 ชั่วโมง',
       sendAt: new Date(year, month, date, hour, minute),
       repeatEvery: 'day',
       repeatCount: 300
@@ -133,8 +133,8 @@ class Home extends React.Component{
     minute = (minute + 30) % 60;
     Notification.create({
       id: 2,
-      subject: 'Scheduled Notification',
-      message: 'กดไม่ถึงในครึ่งชม.',
+      subject: 'คำเตือน!!',
+      message: 'ลูกของคุณดิ้นไม่ถึง 10 ครั้ง ใน 30 นาที ให้นับต่อไปจนครบ 12 ชั่วโมง',
       sendAt: new Date(year, month, date, hour, minute)
     });
   }
@@ -206,6 +206,9 @@ class Home extends React.Component{
     if(newData == null){
       newData = [];
       newData.push(dataToBeSaved);
+      Notification.deleteAll();
+      this.createDiaryNoti();
+      this.createHalfHourNoti();
     }
     else if(newData[size - 1].dateNo === nowDate){
       newData[size - 1].time.push(this.state.time);
@@ -213,11 +216,6 @@ class Home extends React.Component{
       if(newData[size - 1].currCount == 10){
         this.Show_Custom_Alert(true);
         Notification.deleteAll();
-      }
-      if(newData[size - 1].currCount == 1){
-        Notification.deleteAll();
-        this.createDiaryNoti();
-        this.createHalfHourNoti();
       }
     }
     else if(newData[size - 1].dateNo != nowDate){
