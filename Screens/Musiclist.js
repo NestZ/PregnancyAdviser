@@ -1,22 +1,82 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import SoundPlayer from 'react-native-sound-player';
+import Icon from 'react-native-vector-icons/Entypo';
 
 export default class Musiclist extends React.Component   {
-  playsound1(){
-    SoundPlayer.playSoundFile('p1','ogg')
-  }
-  playsound2(){
-    SoundPlayer.playSoundFile('p2','ogg')
-  }
-  playsound3(){
-    SoundPlayer.playSoundFile('p3','ogg')
+  constructor() {
+    super();
+    this.state = {
+      toggle: false,
+      textValue: 'controller-play',
+      nowPlay: -1,
+      status: "stop",
+    }
   }
   static navigationOptions = ({ navigation }) => {
     return {
        header: () => null
     } 
   }
+  playpause = async(index) => {
+    if(this.state.status == "stop"){
+      SoundPlayer.playSoundFile("p" + String(index),"ogg");
+      await this.setState({nowPlay:index});
+      await this.setState({status:"play"});
+    }
+    else if(this.state.status == "play"){
+      SoundPlayer.pause();
+      await this.setState({status:"pause"});
+      await this.setState({nowPlay:-1});
+    }
+    else {
+      SoundPlayer.resume();
+      await this.setState({status:"play"});
+      await this.setState({nowPlay:index});
+    }
+    this.updaticon();
+  }
+ stop = async() => {
+   if(this.state.status =="play"){
+     SoundPlayer.stop();
+     await this.setState({status:"stop"});
+     await this.setState({nowPlay:-1});
+   }
+   this.updaticon();
+ }
+ updaticon(){
+   if(this.state.status=="play"){
+    this.setState({textValue:"controller-paus"});
+   }
+   else if(this.state.status=="pause"||this.state.status=="stop"){
+     
+     this.setState({textValue:"controller-play"});
+   }
+ }
+nextback = async(nb) => {
+  if(this.state.status == "play"){
+  let temp = this.state.nowPlay;
+  if(nb){
+    if(this.state.nowPlay==3){
+       temp = 1;
+    }
+    else{
+    temp++;
+  }
+  }
+  else{
+      if(this.state.nowPlay==1){
+         temp = 3;
+      }
+      else {
+       temp--;
+    }
+  }
+  await this.stop();
+  await this.setState({nowPlay:temp});
+  this.playpause(this.state.nowPlay);
+}
+}
   render() {
     return (
       <View style={styles.container}>
@@ -24,48 +84,47 @@ export default class Musiclist extends React.Component   {
           <Text style={styles.headerText}> MUSICLIST </Text>
         </View>
         <ScrollView style={styles.background}>
-          <TouchableOpacity style={styles.button} onPress={()=>this.playsound1()}>
-            <Text style={styles.buttonText}> โมสาร์ท พัฒนาสมอง1 </Text>
+          <TouchableOpacity style={styles.button} onPress={()=>this.playpause(1)}>
+            <Text style={styles.buttonText}> <Icon name='note' size={30} color="#f589e1"></Icon> โมสาร์ท พัฒนาสมอง1 </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>this.playsound2()}>
-            <Text style={styles.buttonText}> โมสาร์ท พัฒนาสมอง2 </Text>
+          {this.state.nowPlay == 1 ? (
+        <View style={{position:"absolute",right:40,paddingTop:15,}}>
+           <Icon name='controller-play' size={30} color="#00ff62"></Icon>
+        </View>
+          ):null}
+              <TouchableOpacity style={styles.button} onPress={()=>this.playpause(2)}>
+            <Text style={styles.buttonText}> <Icon name='note' size={30} color="#f589e1"></Icon> โมสาร์ท พัฒนาสมอง2 </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>this.playsound3()}>
-            <Text style={styles.buttonText}> โมสาร์ท พัฒนาสมอง3 </Text>
+          {this.state.nowPlay == 2 ? (
+        <View style={{position:"absolute",right:40,paddingTop:80,}}>
+           <Icon name='controller-play' size={30} color="#00ff62"></Icon>
+        </View>
+          ):null}
+            <TouchableOpacity style={styles.button} onPress={()=>this.playpause(3)}>
+            <Text style={styles.buttonText}> <Icon name='note' size={30} color="#f589e1"></Icon> โมสาร์ท พัฒนาสมอง3 </Text>
           </TouchableOpacity>
-          {/* <TouchableOpacity style={styles.button} onPress={()=>null}>
-            <Text style={styles.buttonText}> ยังไม่มีเพลง4 </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>null}>
-            <Text style={styles.buttonText}> ยังไม่มีเพลง5 </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>null}>
-            <Text style={styles.buttonText}> ยังไม่มีเพลง6 </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>null}>
-            <Text style={styles.buttonText}> ยังไม่มีเพลง7 </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>null}>
-            <Text style={styles.buttonText}> ยังไม่มีเพลง8 </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>null}>
-            <Text style={styles.buttonText}> ยังไม่มีเพลง9 </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>null}>
-            <Text style={styles.buttonText}> ยังไม่มีเพลง10 </Text>
-          </TouchableOpacity> */}
+          {this.state.nowPlay == 3 ? (
+        <View style={{position:"absolute",right:40,paddingTop:145,}}>
+           <Icon name='controller-play' size={30} color="#00ff62"></Icon>
+        </View>
+          ):null}
         </ScrollView>
         <View style={styles.row}>
-          <TouchableOpacity style={styles.button} onPress={()=>SoundPlayer.resume()}>
-            <Text style={styles.buttonText}> RESUME </Text>
+        <TouchableOpacity style={styles.button3} onPress={()=>this.nextback(0)}>
+            <Icon name="controller-fast-backward" size={60} color="#55b5fa"></Icon>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>SoundPlayer.pause()}>
-            <Text style={styles.buttonText}> PAUSE </Text>
+          <TouchableOpacity style={styles.button2} onPress={()=>this.playpause(1)}>
+            <Icon name={this.state.textValue} size={60} color="#55b5fa"></Icon>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>SoundPlayer.stop()}>
-            <Text style={styles.buttonText}> STOP </Text>
+          <TouchableOpacity style={styles.button2} onPress={()=>this.stop()}>
+            <Icon name='controller-stop' size={60} color="#55b5fa"></Icon>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.button4} onPress={()=>this.nextback(1)}>
+            <Icon name="controller-fast-forward" size={60} color="#55b5fa"></Icon>
+          </TouchableOpacity>
+          
         </View>
+        <Text>{this.state.nowPlay}</Text>
       </View>
     );
   }
@@ -76,14 +135,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header:{
-    backgroundColor: '#E91E63',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
+    borderBottomWidth: 3,
+    borderBottomColor: '#ddd'
   },
   headerText:{
-    color: 'white',
-    fontSize: 18,
-    padding: 15,
+    color: '#f5424e',
+    fontSize: 20,
+    padding: 13
   },
   scrollContainer:{
     flex: 1,
@@ -97,20 +158,39 @@ const styles = StyleSheet.create({
     zIndex:10,
   },
   button:{
-      borderWidth: 1,
-      backgroundColor: '#ffcc99',
-      alignItems: 'center',
-      padding: 10,
+    padding: 15,
+    borderBottomWidth: 2,
+    backgroundColor:"white",
+    fontSize:18,
+    color:"white",
+    textAlign :'center',
+    width:'100%',
+    justifyContent:'center',
+    alignSelf:'center',
+  },
+  buntton2:{
+    borderWidth: 1,
+    backgroundColor: '#ffcc99',
+    position:"absolute",
+    alignItems:"center",
+  },
+  button3:{
+    right:20,
+  },
+  button4:{
+    left:20,
   },
   buttonText:{
       fontSize: 16,
   },
   row:{
-    justifyContent: 'center',
-    backgroundColor: '#ff6699',
-    flexDirection: 'row',
+    position:"relative",
+    // backgroundColor: '#ff6699',
+    flexDirection:"row",
+   justifyContent: "center",
+    
   },
   background:{
-    backgroundColor: "#ff99cc",
+    backgroundColor: "white",
   },
 })
