@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ImageBackground,ScrollView, StyleSheet, Text, View} from 'react-native';
 
 class Details2 extends React.Component{
   static navigationOptions = ({ navigation }) => {
@@ -10,11 +10,14 @@ class Details2 extends React.Component{
   render() {
   const {navigate} = this.props.navigation;
   return (
-    <View>  
+  <ImageBackground
+    style={{width: '100%', height: '100%'}}
+    source={require('../img/a.png')}
+      >
+    <ScrollView>
       <View style={styles.header}> 
           <Text style={styles.headerText}> อาการลูกดิ้นที่ผิดปกติ </Text>
       </View>
-        <ScrollView>
           <Text style={styles.Text}>1.ภาวะลูกดิ้นน้อยลง </Text>
           <Text style={styles.Text2}>      ภาวะลูกดิ้นน้อยลง หมายถึง ลูกอยู่ในภาวะอันตราย มีความเสี่ยงที่จะเสียชีวิตได้ ดังนั้นถ้าหากมารดาพบว่า ลูกดิ้นน้อยลง </Text>
           <Text style={styles.Text2}>หรือหยุดดิ้นไม่ว่าเป็นเวลาใดของแต่ละวันให้มาพบแพทย์ทันที  </Text>
@@ -32,8 +35,9 @@ class Details2 extends React.Component{
           <Text> </Text>
           <Text style={styles.Text2}>      - อาการลูกดิ้นมากที่แสดงถึงสัญญาณอันตรายก็คือ ลูกจะดิ้นแรงมากอยู่ระยะหนึ่ง แล้วหยุดดิ้นไปเลยและไม่มีอาการดิ้น </Text>
           <Text style={styles.Text2}>อีกต่อไป นั่นคือลูกในท้องเสียชีวิตแล้ว</Text>
-        </ScrollView>
-    </View>
+        
+    </ScrollView>
+   </ImageBackground>
   );
   }
 }
@@ -51,7 +55,7 @@ const styles = StyleSheet.create ({
   },
   headerText:{
     color: 'white',
-    fontSize: 24,
+    fontSize: 20,
     padding: 15,
   },
   Text:{

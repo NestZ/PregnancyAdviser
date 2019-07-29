@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 
 class Details1 extends React.Component{
   static navigationOptions = ({ navigation }) => {
@@ -14,12 +14,17 @@ class Details1 extends React.Component{
       <View style={styles.header}> 
           <Text style={styles.headerText}> การนับลูกดิ้น </Text>
       </View>
-      <View style={styles.frame}>
+      <ImageBackground
+                style={{width: '100%', height: '100%'}}
+                source={require('../img/a.png')}
+            >
+        <View style={styles.frame}>
         <Text style={styles.Text}>            ถือเป็นวิธีการประเมินสุขภาพลูกในท้อง ที่คุณแม่สามารถประเมินสุขภาพลูกน้อยในท้องและปฏิบัติได้ </Text>
         <Text style={styles.Text}>ด้วยตนเอง  และช่วยเฝ้าระวังเกี่ยวกับภาวะอันตรายลูกในท้องซึ่งจะมีการเปลี่ยนแปลงพฤติกรรม การดิ้นที่คุณ</Text>
         <Text style={styles.Text}>แม่สามารถสังเกตได้ ดังนั้นเมื่อคุณแม่อายุครรภ์เข้าสู่ 32 สัปดาห์ขึ้นไป ควรนับลูกดิ้นทุกวันโดยเฉพาะในคุณ </Text>
         <Text style={styles.Text}>แม่ที่ได้รับการวินิจฉัยว่าตั้งครรภ์เสี่ยงสูง </Text>
       </View>
+      </ImageBackground>
     </View>
   );
   }
@@ -30,7 +35,7 @@ export default Details1;
 const styles = StyleSheet.create ({
   container:{
     flex: 1,
-    backgroundColor: "#ffcc99",
+    backgroundColor: "transparent",
   },
   header:{
     backgroundColor: '#E91E63',
@@ -39,13 +44,13 @@ const styles = StyleSheet.create ({
   },
   headerText:{
     color: 'white',
-    fontSize: 24,
+    fontSize: 20,
     padding: 15,
   },
   Text:{
-    fontSize: 18,
+    fontSize: 18
   },
   frame:{
-    backgroundColor: "#ffcc99",
-  },
+    backgroundColor: 'transparent'
+  }
 })
