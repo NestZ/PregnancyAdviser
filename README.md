@@ -31,3 +31,5 @@ Freepik
 Google
 
 Kiranshastry
+
+Smashicons
