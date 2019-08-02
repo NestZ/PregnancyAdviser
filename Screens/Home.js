@@ -174,6 +174,8 @@ class Home extends React.Component{
   setDate(){
     var date = new Date().getDate();
     var month = new Date().getMonth();
+    if(date < 10)date = '0' + date;
+    if(month < 10)month = '0' + month;
     var year = new Date().getFullYear();
     this.setState({date:
       date + '/' + month + '/' + year
@@ -191,10 +193,11 @@ class Home extends React.Component{
   pushData = async() => {
     var size;
     var nowDate = new Date().getDate();
+    if(nowDate < 10)nowDate = '0' + nowDate;
     const dataToBeSaved = {
       currCount : 1,
       date : this.state.date,
-      dateNo : new Date().getDate(),
+      dateNo : nowDate,
       time : []
     }
     dataToBeSaved.time.push(this.state.time);

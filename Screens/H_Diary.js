@@ -25,7 +25,8 @@ class History_Diary extends React.Component{
     const {navigate} = this.props.navigation;
     if(this.state.listArr == null)this.state.listArr = [];
     let dateList = this.state.listArr.map((val,key) => {
-      return <TouchableOpacity key={key} onPress={() => navigate('History_Hourly',{Index:key})}><List keyval={key} val={val}></List></TouchableOpacity>
+      let dateTemp = this.state.listArr[key].date;
+      return <TouchableOpacity key={key} onPress={() => navigate('History_Hourly',{Index:key,date:dateTemp})}><List keyval={key} val={val}></List></TouchableOpacity>
     });
     return (
       <View style={styles.diaryContainer}>
