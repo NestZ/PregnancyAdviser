@@ -17,19 +17,6 @@ const list = [
     phoneNumber :'tel:${1554}'
   },
 ]
-// const 
-//   Emer191 = {
-//     number: '191', 
-//     prompt: false  
-//   },
-//   Emer1669 = {
-//       number: '1669',
-//       prompt: false
-//   },
-//   Emer1554 = {
-//       number: '1554',
-//       prompt: false
-//   }
 
 
  
@@ -42,7 +29,7 @@ export default class Callphone extends React.Component{
       }
     render () {
         return (
-          <View> 
+          <View style={styles.container}> 
             <View style={styles.header}>
             <Text style={styles.headerText}> เบอร์ฉุกเฉิน </Text>
             </View>
@@ -51,22 +38,10 @@ export default class Callphone extends React.Component{
           key={i}
           title={l.name}
           onPress={()=>Linking.openURL(l.phoneNumber)}
+          style = {styles.button}
           /> ))}
 </View>
-            // <View>
-            //     <View style={styles.header}>
-            //         <Text style={styles.headerText}> เบอร์ฉุกเฉิน </Text>
-            //     </View>
-            //     <TouchableOpacity style={styles.button} onPress={()=>call(Emer191).catch(console.error)}>
-            //         <Text style={styles.buttonText}> แจ้งเหตุด่วน เหตุร้าย (191) </Text>
-            //     </TouchableOpacity>
-            //     <TouchableOpacity style={styles.button} onPress={()=>call(Emer1669).catch(console.error)}>
-            //         <Text style={styles.buttonText}> สถาบันการแพทย์ฉุกเฉิน (1669)</Text>
-            //     </TouchableOpacity>
-            //     <TouchableOpacity style={styles.button} onPress={()=>call(Emer1554).catch(console.error)}>
-            //         <Text style={styles.buttonText}> หน่วยแพทย์กู้ชีพ (1554)</Text>
-            //     </TouchableOpacity>
-            // </View>
+
         );
     }
 }
@@ -76,16 +51,18 @@ const styles = StyleSheet.create({
       flex: 1,
     },
     header:{
-      backgroundColor: '#E91E63',
+      backgroundColor: '#f5424e',
       alignItems: 'center',
       justifyContent: 'center',
     },
     button:{
-      borderWidth: 1,
-      backgroundColor: '#00ffff',
-      alignItems: 'center',
-      borderRadius: 10,
-      padding: 10,
+    padding: 5,
+    borderBottomWidth: 1,
+    width:'100%',
+    justifyContent:'center',
+    alignSelf:'center',
+    borderColor:"gray",
+    backgroundColor:"white"
     },
     buttonText:{
       fontSize: 16,

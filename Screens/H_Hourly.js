@@ -1,4 +1,4 @@
-import {Text, View, ScrollView, Alert} from 'react-native';
+import {Text, View, ScrollView, ImageBackground} from 'react-native';
 import React from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import List from './H_Hourly_S';
@@ -63,7 +63,7 @@ class History_Hourly extends React.Component{
     return (
       <View style={styles.container}>
         <View style={styles.hourHeader}>
-          <Text style={styles.hourHeaderText}>Date</Text>
+          <Text style={styles.hourHeaderText}>{this.state.date}</Text>
         </View>
         <ScrollView style={styles.scrollContainer}>
           {timeList}
@@ -75,7 +75,9 @@ class History_Hourly extends React.Component{
                       borderTopRightRadius: 10,
                       elevation: 25,
                       alignItems: 'center',
-                      justifyContent: 'center'}}>
+                      justifyContent: 'center',
+                      borderWidth: 1,
+                      borderColor: 'black'}}>
           <Text style={styles.resText}>{s}</Text>
         </View>
       </View>

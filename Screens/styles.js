@@ -2,17 +2,16 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container:{
-      flex:1
+      flex:1,
+      backgroundColor: '#d2f9fe'
     },
     header:{
-      backgroundColor: 'white',
+      backgroundColor: '#f5424e',
       alignItems: 'center',
       justifyContent: 'center',
-      borderBottomWidth: 3,
-      borderBottomColor: '#ddd'
     },
     headerText:{
-      color: '#f5424e',
+      color: 'white',
       fontSize: 20,
       padding: 13
     },
@@ -110,11 +109,9 @@ const styles = StyleSheet.create({
         flex:1
     },
     hourHeader:{
-        backgroundColor: '#E91E63',
+        backgroundColor: '#f5424e',
         alignItems: 'center',
-        justifyContent: 'center',
-        borderBottomWidth: 5,
-        borderBottomColor: '#ddd'
+        justifyContent: 'center'
     },
     hourHeaderText:{
         color: 'white',
@@ -138,8 +135,8 @@ const styles = StyleSheet.create({
         position: 'relative',
         padding: 20,
         paddingRight: 100,
-        borderBottomWidth: 2,
-        borderBottomColor: '#ededed'
+        borderBottomWidth: 1,
+        borderBottomColor: 'grey'
     },
     date:{
         paddingLeft: 20,
@@ -156,17 +153,16 @@ const styles = StyleSheet.create({
         right: 10
     },
     diaryContainer:{
-        flex:1
+        flex:1,
+        backgroundColor: '#f9d5f9'
     },
     diaryHeader:{
-        backgroundColor: 'white',
+        backgroundColor: '#f5424e',
         alignItems: 'center',
         justifyContent: 'center',
-        borderBottomWidth: 3,
-        borderBottomColor: '#ddd'
     },
     diaryHeaderText:{
-        color: '#f5424e',
+        color: 'white',
         fontSize: 20,
         padding: 13
     },
@@ -186,8 +182,8 @@ const styles = StyleSheet.create({
         position: 'relative',
         padding: 20,
         paddingRight: 100,
-        borderBottomWidth: 2,
-        borderBottomColor: '#ededed'
+        borderBottomWidth: 1,
+        borderBottomColor: 'grey'
     },
     diaryDate:{
         fontSize: 15,
