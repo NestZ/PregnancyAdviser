@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import SoundPlayer from 'react-native-sound-player';
+<<<<<<< HEAD
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
+=======
+import Icon from 'react-native-vector-icons/Entypo';
+>>>>>>> NestZ
 
 export default class Musiclist extends React.Component   {
   constructor() {
     super();
     this.state = {
       toggle: false,
+<<<<<<< HEAD
       textValue: 'control-play',
+=======
+      textValue: 'controller-play',
+>>>>>>> NestZ
       nowPlay: -1,
       status: "stop",
     }
@@ -46,11 +54,19 @@ export default class Musiclist extends React.Component   {
  }
  updaticon(){
    if(this.state.status=="play"){
+<<<<<<< HEAD
     this.setState({textValue:"control-pause"});
    }
    else if(this.state.status=="pause"||this.state.status=="stop"){
      
      this.setState({textValue:"control-play"});
+=======
+    this.setState({textValue:"controller-paus"});
+   }
+   else if(this.state.status=="pause"||this.state.status=="stop"){
+     
+     this.setState({textValue:"controller-play"});
+>>>>>>> NestZ
    }
  }
 nextback = async(nb) => {
@@ -85,6 +101,7 @@ nextback = async(nb) => {
         </View>
         <ScrollView style={styles.background}>
           <TouchableOpacity style={styles.button} onPress={()=>this.playpause(1)}>
+<<<<<<< HEAD
             <Text style={styles.buttonText}> <Icon name='music-tone' size={30} color="#f589e1"></Icon> โมสาร์ท พัฒนาสมอง1 </Text>
           </TouchableOpacity>
           {this.state.nowPlay == 1 ? (
@@ -106,21 +123,55 @@ nextback = async(nb) => {
           {this.state.nowPlay == 3 ? (
         <View style={{position:"absolute",right:40,paddingTop:145,}}>
            <Icon name='control-play' size={30} color="#00ff62"></Icon>
+=======
+            <Text style={styles.buttonText}> <Icon name='note' size={30} color="#f589e1"></Icon> โมสาร์ท พัฒนาสมอง1 </Text>
+          </TouchableOpacity>
+          {this.state.nowPlay == 1 ? (
+        <View style={{position:"absolute",right:40,paddingTop:15,}}>
+           <Icon name='controller-play' size={30} color="#00ff62"></Icon>
+        </View>
+          ):null}
+              <TouchableOpacity style={styles.button} onPress={()=>this.playpause(2)}>
+            <Text style={styles.buttonText}> <Icon name='note' size={30} color="#f589e1"></Icon> โมสาร์ท พัฒนาสมอง2 </Text>
+          </TouchableOpacity>
+          {this.state.nowPlay == 2 ? (
+        <View style={{position:"absolute",right:40,paddingTop:80,}}>
+           <Icon name='controller-play' size={30} color="#00ff62"></Icon>
+        </View>
+          ):null}
+            <TouchableOpacity style={styles.button} onPress={()=>this.playpause(3)}>
+            <Text style={styles.buttonText}> <Icon name='note' size={30} color="#f589e1"></Icon> โมสาร์ท พัฒนาสมอง3 </Text>
+          </TouchableOpacity>
+          {this.state.nowPlay == 3 ? (
+        <View style={{position:"absolute",right:40,paddingTop:145,}}>
+           <Icon name='controller-play' size={30} color="#00ff62"></Icon>
+>>>>>>> NestZ
         </View>
           ):null}
         </ScrollView>
         <View style={styles.row}>
         <TouchableOpacity style={styles.button3} onPress={()=>this.nextback(0)}>
+<<<<<<< HEAD
             <Icon name="control-rewind" size={60} color="#55b5fa"></Icon>
+=======
+            <Icon name="controller-fast-backward" size={60} color="#55b5fa"></Icon>
+>>>>>>> NestZ
           </TouchableOpacity>
           <TouchableOpacity style={styles.button2} onPress={()=>this.playpause(1)}>
             <Icon name={this.state.textValue} size={60} color="#55b5fa"></Icon>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button2} onPress={()=>this.stop()}>
+<<<<<<< HEAD
             <Icon name='close' size={60} color="#55b5fa"></Icon>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button4} onPress={()=>this.nextback(1)}>
             <Icon name="control-forward" size={60} color="#55b5fa"></Icon>
+=======
+            <Icon name='controller-stop' size={60} color="#55b5fa"></Icon>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button4} onPress={()=>this.nextback(1)}>
+            <Icon name="controller-fast-forward" size={60} color="#55b5fa"></Icon>
+>>>>>>> NestZ
           </TouchableOpacity>
           
         </View>
@@ -133,16 +184,25 @@ nextback = async(nb) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:"#8ef5d1",
   },
   header:{
+<<<<<<< HEAD
     backgroundColor: 'white',
+=======
+    backgroundColor: '#f5424e',
+>>>>>>> NestZ
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomWidth: 3,
     borderBottomColor: '#ddd'
   },
   headerText:{
+<<<<<<< HEAD
     color: '#f5424e',
+=======
+    color: 'white',
+>>>>>>> NestZ
     fontSize: 20,
     padding: 13
   },
@@ -159,14 +219,23 @@ const styles = StyleSheet.create({
   },
   button:{
     padding: 15,
+<<<<<<< HEAD
     borderBottomWidth: 2,
     backgroundColor:"white",
     fontSize:18,
     color:"white",
+=======
+    borderBottomWidth: 1,
+    fontSize:18,
+>>>>>>> NestZ
     textAlign :'center',
     width:'100%',
     justifyContent:'center',
     alignSelf:'center',
+<<<<<<< HEAD
+=======
+    borderColor:"gray"
+>>>>>>> NestZ
   },
   buntton2:{
     borderWidth: 1,
@@ -189,8 +258,11 @@ const styles = StyleSheet.create({
     flexDirection:"row",
    justifyContent: "center",
     
+<<<<<<< HEAD
   },
   background:{
     backgroundColor: "white",
+=======
+>>>>>>> NestZ
   },
 })
