@@ -6,11 +6,11 @@ import History_Diary from './Screens/H_Diary';
 import History_Hourly from './Screens/H_Hourly';
 import Info from './Screens/Information';
 import Musiclist from './Screens/Musiclist';
-import Details1 from './Screens/details/Details1';
-import Details2 from './Screens/details/Details2';
-import Details3 from './Screens/details/Details3';
-import Details4 from './Screens/details/Details4';
-import Details5 from './Screens/details/Details5';
+import Details1 from './Screens/Details1';
+import Details2 from './Screens/Details2';
+import Details3 from './Screens/Details3';
+import Details4 from './Screens/Details4';
+import Details5 from './Screens/Details5';
 import Callphone from './Screens/Callphone';
 
 const rightTransition = (index, position, width) => {
