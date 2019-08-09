@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {ImageBackground, StyleSheet, Text, View,Image} from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 class Details5 extends React.Component{
   static navigationOptions = ({ navigation }) => {
@@ -10,10 +11,7 @@ class Details5 extends React.Component{
   render() {
   const {navigate} = this.props.navigation;
   return (
-  <ImageBackground
-    style={{width: '100%', height: '100%'}}
-    source={require('../img/a.png')}
->
+   <ScrollView style={{backgroundColor:"#f6ebff"}}>
     <View>
       <View style={styles.header}> 
           <Text style={styles.headerText}> การแปลผลลูกดื้น </Text>
@@ -22,8 +20,14 @@ class Details5 extends React.Component{
       <Text style={styles.Text}>การเจริญเติบโตที่ดี (แปลผล) แต่ถ้าลูกในท้องดิ้นน้อยกว่า 10 ครั้ง ใน 30 นาที ให้นับต่อไปอีกจนครบ 12 </Text>
 	    <Text style={styles.Text}>ชั่วโมง หากลูกยังดิ้นน้อยกว่า 10 ครั้ง ใน 12 ชั่วโมง </Text>
       <Text style={styles.Text}>แสดงว่าลูกในท้องมีความผิดปกติควรรีบมาพบแพทย์ (แปลผล) </Text>
+      <View style={styles.resize}>
+              <Image
+                 style={{width: 200, height: 200,}}
+                 source={require('./img/baby.png')}> 
+             </Image>
+      </View>
     </View>
-  </ImageBackground>
+    </ScrollView> 
   );
   }
 }
@@ -36,7 +40,7 @@ const styles = StyleSheet.create ({
     backgroundColor: "#ffcc99",
   },
   header:{
-    backgroundColor: '#E91E63',
+    backgroundColor: '#f5424e',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -48,4 +52,8 @@ const styles = StyleSheet.create ({
   Text:{
     fontSize: 18,
   },
+  resize:{
+    alignItems:"center",
+    paddingTop:60
+  }
 })

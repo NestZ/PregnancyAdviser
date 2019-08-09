@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ImageBackground,ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ImageBackground,ScrollView, StyleSheet, Text, View,Image} from 'react-native';
 
 class Details2 extends React.Component{
   static navigationOptions = ({ navigation }) => {
@@ -10,11 +10,7 @@ class Details2 extends React.Component{
   render() {
   const {navigate} = this.props.navigation;
   return (
-  <ImageBackground
-    style={{width: '100%', height: '100%'}}
-    source={require('../img/a.png')}
-      >
-    <ScrollView>
+    <ScrollView style={{backgroundColor:"#ffecd6"}}>
       <View style={styles.header}> 
           <Text style={styles.headerText}> อาการลูกดิ้นที่ผิดปกติ </Text>
       </View>
@@ -35,9 +31,13 @@ class Details2 extends React.Component{
           <Text> </Text>
           <Text style={styles.Text2}>      - อาการลูกดิ้นมากที่แสดงถึงสัญญาณอันตรายก็คือ ลูกจะดิ้นแรงมากอยู่ระยะหนึ่ง แล้วหยุดดิ้นไปเลยและไม่มีอาการดิ้น </Text>
           <Text style={styles.Text2}>อีกต่อไป นั่นคือลูกในท้องเสียชีวิตแล้ว</Text>
-        
+          <View style={styles.resize}>
+              <Image
+                 style={{width: 200, height: 200,}}
+                 source={require('./img/doctor.png')}> 
+             </Image>
+            </View>
     </ScrollView>
-   </ImageBackground>
   );
   }
 }
@@ -49,7 +49,7 @@ const styles = StyleSheet.create ({
     flex: 1,
   },
   header:{
-    backgroundColor: '#E91E63',
+    backgroundColor: '#f5424e',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -60,8 +60,13 @@ const styles = StyleSheet.create ({
   },
   Text:{
     fontSize: 20,
+    fontWeight: 'bold',
   },
   Text2:{
     fontSize: 16,
   },
+  resize:{
+    alignItems:"center",
+    paddingTop:40
+  }
 })

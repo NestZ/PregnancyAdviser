@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center'
     },
     counterText:{
-      color: 'white',
+      color: 'black',
       fontSize: 60
     },
     minusButton:{
