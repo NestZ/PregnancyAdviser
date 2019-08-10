@@ -65,7 +65,7 @@ export default class App extends Component {
       <ScrollView>
       <View style={styles.kyu}>
        <TouchableOpacity onPress={()=>navigate('Details1')}>
-        <Text style={styles.list}>นับลูกดิ้น</Text>
+        <Text style={styles.list}>การนับลูกดิ้น</Text>
        </TouchableOpacity>
        <TouchableOpacity onPress={()=>navigate('Details3')}>
         <Text style={styles.list1}>รูปแบบการดิ้นของลูกในครรภ์ตามอายุครรภ์</Text>
@@ -77,10 +77,10 @@ export default class App extends Component {
         <Text style={styles.list3}>อาการลูกดิ้นผิดปกติ</Text>
        </TouchableOpacity>
        <TouchableOpacity onPress={()=>navigate('Details5')}>
-        <Text style={styles.list4}>การแปรผลลูกดิ้น</Text>
+        <Text style={styles.list4}>การแปลผลลูกดิ้น</Text>
        </TouchableOpacity>
        <TouchableOpacity onPress={()=>navigate('Musiclist')}><Text style ={styles.list5}>เพลงเสริมพัฒนาการ</Text></TouchableOpacity>
-        <TouchableOpacity onPress={()=>navigate('Callphone')}><Text style ={styles.list6}>เบอร์โทรติดต่อยามฉุกเฉิน</Text></TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigate('Callphone')}><Text style ={styles.list6}>เบอร์โทรศัพท์ติดต่อยามฉุกเฉิน</Text></TouchableOpacity>
         </View>
         </ScrollView>
       </View>
