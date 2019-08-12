@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {ImageBackground,ScrollView, StyleSheet, Text, View,Image} from 'react-native';
+import React from 'react';
+import {ScrollView, StyleSheet, Text, View,Image} from 'react-native';
 
 class Details3 extends React.Component{
   static navigationOptions = ({ navigation }) => {

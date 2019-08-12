@@ -1,16 +1,15 @@
 import React from 'react';
-import {TouchableOpacity,StyleSheet,View,Text} from 'react-native';
+import {StyleSheet,View,Text} from 'react-native';
 import {Linking} from 'react-native'
-import call from 'react-native-phone-call';
 import {ListItem} from 'react-native-elements';
 const list = [
   {
-    name: 'แจ้งเหตุด่วน เหตุร้าย (191)',
-    phoneNumber : 'tel:${191}'
-  },
-  {
     name: 'สถาบันการแพทย์ฉุกเฉิน(1669)',
     phoneNumber : 'tel:${1669}'
+  },
+  {
+    name: 'แจ้งเหตุด่วน เหตุร้าย (191)',
+    phoneNumber : 'tel:${191}'
   },
   {
     name: 'หน่วยแพทย์กู้ชีพ (1554)',

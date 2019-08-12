@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Button, Image,Text,TouchableOpacity} from 'react-native';
+import { StyleSheet, View, Text,TouchableOpacity} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { NavigationEvents } from 'react-navigation';
  
 export default class App extends Component {
   constructor() {
@@ -80,7 +79,7 @@ export default class App extends Component {
         <Text style={styles.list4}>การแปลผลลูกดิ้น</Text>
        </TouchableOpacity>
        <TouchableOpacity onPress={()=>navigate('Musiclist')}><Text style ={styles.list5}>เพลงเสริมพัฒนาการ</Text></TouchableOpacity>
-        <TouchableOpacity onPress={()=>navigate('Callphone')}><Text style ={styles.list6}>เบอร์โทรศัพท์ติดต่อยามฉุกเฉิน</Text></TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigate('Callphone')}><Text style ={styles.list6}>เบอร์โทรศัพท์ติดต่อฉุกเฉิน</Text></TouchableOpacity>
         </View>
         </ScrollView>
       </View>
