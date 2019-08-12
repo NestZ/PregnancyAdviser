@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import SoundPlayer from 'react-native-sound-player';
 import Icon from 'react-native-vector-icons/Entypo';

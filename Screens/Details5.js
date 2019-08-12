@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {ImageBackground, StyleSheet, Text, View,Image} from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, View,Image} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
 class Details5 extends React.Component{

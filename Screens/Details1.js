@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {ImageBackground, StyleSheet, Text, View,Image} from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, View,Image} from 'react-native';
 
 class Details1 extends React.Component{
   static navigationOptions = ({ navigation }) => {
