@@ -16,6 +16,7 @@ class Details5 extends React.Component{
       <View style={styles.header}> 
           <Text style={styles.headerText}> การแปลผลลูกดื้น </Text>
       </View>
+      <View style={styles.frame}>
       <Text style={styles.Text}>      ถ้าลูกในท้องดิ้นครบ 10 ครั้ง ใน 30 นาที แสดงว่า ลูกในท้องมีสุขภาพอยู่ในเกณฑ์ปกติ มีพัฒนาการ </Text>
       <Text style={styles.Text}>การเจริญเติบโตที่ดี (แปลผล) แต่ถ้าลูกในท้องดิ้นน้อยกว่า 10 ครั้ง ใน 30 นาที ให้นับต่อไปอีกจนครบ 12 </Text>
 	    <Text style={styles.Text}>ชั่วโมง หากลูกยังดิ้นน้อยกว่า 10 ครั้ง ใน 12 ชั่วโมง </Text>
@@ -23,8 +24,9 @@ class Details5 extends React.Component{
       <View style={styles.resize}>
               <Image
                  style={{width: 200, height: 200,}}
-                 source={require('./img/baby.png')}> 
+                 source={require('./img/baby.png')}>
              </Image>
+      </View>
       </View>
     </View>
     </ScrollView> 
@@ -50,10 +52,13 @@ const styles = StyleSheet.create ({
     padding: 15,
   },
   Text:{
-    fontSize: 18,
+    fontSize: 16,
   },
   resize:{
     alignItems:"center",
     paddingTop:60
+  },
+  frame:{
+    padding:20,
   }
 })

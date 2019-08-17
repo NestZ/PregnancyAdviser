@@ -16,7 +16,7 @@ class Details4 extends React.Component{
         <View style={styles.header}> 
           <Text style={styles.headerText}> วิธีการนับลูกดิ้น </Text>
         </View>
-        <View style={{paddingTop:20}}>
+        <View style={styles.frame}>
             <Text style={styles.Text}>    การนับลูกดิ้นจนครบ 10 ครั้ง (Count-to-ten) คือ การนับจำนวนลูกดิ้นอย่างต่อเนื่องไปจนครบ 10 ครั้งใน 12 </Text>
             <Text style={styles.Text}>ชั่วโมง ซึ่งปกติลูกจะดิ้นครบ 10 ครั้ง ในเวลา 20-30 </Text>
             <Text style={styles.Text}>นาที ถ้าไม่ครบให้นับต่อไปจนครบ 12 ชั่วโมง หากลูกยัง </Text>
@@ -53,11 +53,13 @@ const styles = StyleSheet.create ({
     padding: 15,
   },
   Text:{
-    fontSize: 18,
- 
+    fontSize: 16,
   },
   resize:{
     alignItems:"center",
     paddingTop:40
+  },
+  frame:{
+    padding:20,
   }
 })

@@ -15,6 +15,7 @@ class Details3 extends React.Component{
         <View style={styles.header}> 
           <Text style={styles.headerText}> รูปแบบการดิ้นของลูกในครรภ์ตามอายุครรภ์ </Text>
         </View>
+        <View style={styles.frame}>
         <Text style={styles.Text}>-  คุณแม่ตั้งครรภ์แรกจะรู้สึกถึงการเคลื่อนไหวของลูกในท้องเมื่ออายุครรภ์ประมาณ 18-20 สัปดาห์ {'\n'} </Text>
         <Text style={styles.Text}>-  คุณแม่ตั้งครรภ์หลังจะรู้สึกถึงการเคลื่อนไหวของลูกในท้องเมื่ออายุครรภ์ประมาณ 16-18 สัปดาห์ {'\n'} </Text>
         <Text style={styles.Text}><Text style={styles.Bold}>สัปดาห์ที่ 1-8 </Text> คุณแม่จะรู้สึกว่าลูกจะดิ้นรวดเร็วมาก เป็นจังหวะสั้นๆลักษณะกระตุก {'\n'}</Text>
@@ -39,6 +40,7 @@ class Details3 extends React.Component{
                  style={{width: 200, height: 200,}}
                  source={require('./img/calendar.png')}> 
              </Image>
+            </View>
             </View>
       </ScrollView>
       </View>
@@ -75,5 +77,8 @@ const styles = StyleSheet.create ({
     alignItems:"center",
     paddingTop:60,
     paddingBottom:40
-  }
+  } ,
+  frame:{
+    padding:20,
+  },
 })
