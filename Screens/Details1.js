@@ -49,10 +49,10 @@ const styles = StyleSheet.create ({
     padding: 15,
   },
   Text:{
-    fontSize: 18
+    fontSize: 18,
   },
   frame:{
-    backgroundColor: 'transparent'
+    padding:20,
   },
   resize:{
     alignItems:"center",

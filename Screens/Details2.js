@@ -14,6 +14,7 @@ class Details2 extends React.Component{
       <View style={styles.header}> 
           <Text style={styles.headerText}> อาการลูกดิ้นที่ผิดปกติ </Text>
       </View>
+        <View style={styles.frame}>
           <Text style={styles.Text}>1.ภาวะลูกดิ้นน้อยลง </Text>
           <Text style={styles.Text2}>      ภาวะลูกดิ้นน้อยลง หมายถึง ลูกอยู่ในภาวะอันตราย มีความเสี่ยงที่จะเสียชีวิตได้ ดังนั้นถ้าหากมารดาพบว่า ลูกดิ้นน้อยลง </Text>
           <Text style={styles.Text2}>หรือหยุดดิ้นไม่ว่าเป็นเวลาใดของแต่ละวันให้มาพบแพทย์ทันที  </Text>
@@ -36,6 +37,7 @@ class Details2 extends React.Component{
                  style={{width: 200, height: 200,}}
                  source={require('./img/doctor.png')}> 
              </Image>
+            </View>
             </View>
     </ScrollView>
   );
@@ -68,5 +70,8 @@ const styles = StyleSheet.create ({
   resize:{
     alignItems:"center",
     paddingTop:40
-  }
+  },
+  frame:{
+    padding:20,
+  },
 })
