@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View,Image} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-
+import {responsiveFontSize} from 'react-native-responsive-dimensions';
 class Details4 extends React.Component{
   static navigationOptions = ({ navigation }) => {
     return {
@@ -17,11 +17,10 @@ class Details4 extends React.Component{
           <Text style={styles.headerText}> วิธีการนับลูกดิ้น </Text>
         </View>
         <View style={styles.frame}>
-            <Text style={styles.Text}>    การนับลูกดิ้นจนครบ 10 ครั้ง (Count-to-ten) คือ การนับจำนวนลูกดิ้นอย่างต่อเนื่องไปจนครบ 10 ครั้งใน 12 </Text>
-            <Text style={styles.Text}>ชั่วโมง ซึ่งปกติลูกจะดิ้นครบ 10 ครั้ง ในเวลา 20-30 </Text>
-            <Text style={styles.Text}>นาที ถ้าไม่ครบให้นับต่อไปจนครบ 12 ชั่วโมง หากลูกยัง </Text>
-            <Text style={styles.Text}>ดิ้นน้อยกว่า 10 ครั้ง ใน 12 ชั่วโมง ถือว่าผิดปกติ ควรรีบ </Text>
-            <Text style={styles.Text}>มาโรงพยาบาลทันที </Text>
+            <Text style={styles.Text}>    การนับลูกดิ้นจนครบ 10 ครั้ง (Count-to-ten) คือ      การนับจำนวนลูกดิ้นอย่างต่อเนื่องไปจนครบ 10 ครั้ง </Text>
+            <Text style={styles.Text}>ใน 12 ชั่วโมงซึ่งปกติลูกจะดิ้นครบ 10 ครั้ง ในเวลา</Text>
+            <Text style={styles.Text}> 20-30นาที ถ้าไม่ครบให้นับต่อไปจนครบ 12 ชั่วโมง  </Text>
+            <Text style={styles.Text}>หากลูกยังดิ้นน้อยกว่า 10 ครั้ง ใน 12 ชั่วโมง ถือว่าผิดปกติ ควรรีบมาโรงพยาบาลทันที</Text>
             <View style={styles.resize}>
               <Image
                  style={{width: 200, height: 200,}}
@@ -49,11 +48,13 @@ const styles = StyleSheet.create ({
   },
   headerText:{
     color: 'white',
-    fontSize: 20,
+    fontSize: 33,
     padding: 15,
+    fontFamily: "SB - Modern"
   },
   Text:{
-    fontSize: 16,
+    fontSize: responsiveFontSize(2.75),
+    fontFamily: "SB - Modern"
   },
   resize:{
     alignItems:"center",

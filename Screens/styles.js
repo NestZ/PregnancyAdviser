@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import {responsiveFontSize} from 'react-native-responsive-dimensions';
 
 const styles = StyleSheet.create({
     container:{
@@ -45,7 +46,8 @@ const styles = StyleSheet.create({
     },
     minusButtonText:{
       color: 'white',
-      fontSize: 16
+      fontSize: responsiveFontSize(3),
+      fontFamily: "SB - Modern"
     },
     Alert_Main_View:{
         alignItems: 'center',

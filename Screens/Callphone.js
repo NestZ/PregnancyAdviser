@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet,View,Text} from 'react-native';
 import {Linking} from 'react-native'
 import {ListItem} from 'react-native-elements';
+import {responsiveFontSize} from 'react-native-responsive-dimensions';
 const list = [
   {
     name: 'สถาบันการแพทย์ฉุกเฉิน(1669)',
@@ -38,6 +39,7 @@ export default class Callphone extends React.Component{
           title={l.name}
           onPress={()=>Linking.openURL(l.phoneNumber)}
           style = {styles.button}
+          fontFamily ={"SB - Modern"}
           /> ))}
 </View>
 
@@ -61,18 +63,21 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignSelf:'center',
     borderColor:"gray",
-    backgroundColor:"white"
+    backgroundColor:"white",
     },
     buttonText:{
-      fontSize: 16,
+      fontSize: responsiveFontSize(2.9),
+      fontFamily: "SB - Modern"
     },
     headerText:{
       color: 'white',
-      fontSize: 18,
+      fontSize: 33,
+      fontFamily: "SB - Modern",
       padding: 15,
     },
     baseText: {
-      fontFamily: 'Cochin',
+      fontSize: responsiveFontSize(2.9),
+      fontFamily: "SB - Modern"
     },
     titleText: {
       fontSize: 20,

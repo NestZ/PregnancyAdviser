@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View,Image} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-
+import {responsiveFontSize} from 'react-native-responsive-dimensions';
 class Details5 extends React.Component{
   static navigationOptions = ({ navigation }) => {
     return {
@@ -14,12 +14,12 @@ class Details5 extends React.Component{
    <ScrollView style={{backgroundColor:"#f6ebff"}}>
     <View>
       <View style={styles.header}> 
-          <Text style={styles.headerText}> การแปลผลลูกดื้น </Text>
+          <Text style={styles.headerText}> การแปลผลลูกดิ้น </Text>
       </View>
       <View style={styles.frame}>
-      <Text style={styles.Text}>      ถ้าลูกในท้องดิ้นครบ 10 ครั้ง ใน 30 นาที แสดงว่า ลูกในท้องมีสุขภาพอยู่ในเกณฑ์ปกติ มีพัฒนาการ </Text>
-      <Text style={styles.Text}>การเจริญเติบโตที่ดี (แปลผล) แต่ถ้าลูกในท้องดิ้นน้อยกว่า 10 ครั้ง ใน 30 นาที ให้นับต่อไปอีกจนครบ 12 </Text>
-	    <Text style={styles.Text}>ชั่วโมง หากลูกยังดิ้นน้อยกว่า 10 ครั้ง ใน 12 ชั่วโมง </Text>
+      <Text style={styles.Text}>      ถ้าลูกในท้องดิ้นครบ 10 ครั้ง ใน 30 นาที แสดงว่า    ลูกในท้องมีสุขภาพอยู่ในเกณฑ์ปกติ มีพัฒนาการ </Text>
+      <Text style={styles.Text}>การเจริญเติบโตที่ดี (แปลผล) แต่ถ้าลูกในท้องดิ้น         น้อยกว่า 10 ครั้ง ใน 30 นาที ให้นับต่อไปอีกจนครบ  </Text>
+	    <Text style={styles.Text}>12ชั่วโมง หากลูกยังดิ้นน้อยกว่า 10 ครั้ง ใน 12 ชั่วโมง </Text>
       <Text style={styles.Text}>แสดงว่าลูกในท้องมีความผิดปกติควรรีบมาพบแพทย์ (แปลผล) </Text>
       <View style={styles.resize}>
               <Image
@@ -48,11 +48,13 @@ const styles = StyleSheet.create ({
   },
   headerText:{
     color: 'white',
-    fontSize: 20,
+    fontSize: 33,
     padding: 15,
+    fontFamily: "SB - Modern"
   },
   Text:{
-    fontSize: 16,
+    fontSize: responsiveFontSize(2.75),
+    fontFamily: "SB - Modern"
   },
   resize:{
     alignItems:"center",

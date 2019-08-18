@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text,TouchableOpacity} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import {responsiveFontSize} from 'react-native-responsive-dimensions';
  
 export default class App extends Component {
   constructor() {
@@ -91,10 +92,12 @@ const styles = StyleSheet.create ({
     flex: 1,
   },
   Text:{
-    fontSize: 18,
+    fontSize: responsiveFontSize(2.9),
+    fontFamily: "SB - Modern"
   },
   Text2:{
-    fontSize: 16,
+    fontSize: responsiveFontSize(2.85),
+    fontFamily: "SB - Modern"
   },
   borderstayle:{
     marginRight :30,
@@ -108,7 +111,8 @@ const styles = StyleSheet.create ({
     borderBottomWidth: 2,
     borderBottomColor: '#ededed',
     backgroundColor:"#ff5a3d",
-    fontSize:18,
+    fontSize: responsiveFontSize(2.9),
+    fontFamily: "SB - Modern",
     color:"#424241",
     textAlign :'center',
 },
@@ -117,7 +121,8 @@ list1:{
   borderBottomWidth: 2,
   borderBottomColor: '#ededed',
   backgroundColor:"#ff9987",
-  fontSize:18 ,
+  fontSize: responsiveFontSize(2.9),
+  fontFamily: "SB - Modern",
   color:"#424241",
   textAlign :'center',
   width:'100%',
@@ -127,7 +132,8 @@ list2:{
   borderBottomWidth: 2,
   borderBottomColor: '#ededed',
   backgroundColor:"#fcf586",
-  fontSize:18,
+  fontSize: responsiveFontSize(2.9),
+  fontFamily: "SB - Modern",
   color:"#424241",
   textAlign :'center',
 },
@@ -136,7 +142,8 @@ list3:{
   borderBottomWidth: 2,
   borderBottomColor: '#ededed',
   backgroundColor:"#b7fc86",
-  fontSize:18,
+  fontSize: responsiveFontSize(2.9),
+  fontFamily: "SB - Modern",
   color:"#424241",
   textAlign :'center',
 },
@@ -145,7 +152,8 @@ list4:{
   borderBottomWidth: 2,
   borderBottomColor: '#ededed',
   backgroundColor:"#86fcf0",
-  fontSize:18,
+  fontSize: responsiveFontSize(2.9),
+  fontFamily: "SB - Modern",
   color:"#424241",
   textAlign :'center',
 },
@@ -154,7 +162,8 @@ list5:{
   borderBottomWidth: 2,
   borderBottomColor: '#ededed',
   backgroundColor:"#cd56f5",
-  fontSize:18,
+  fontSize: responsiveFontSize(2.9),
+  fontFamily: "SB - Modern",
   color:"#424241",
   textAlign :'center',
 },
@@ -163,13 +172,15 @@ list6:{
   borderBottomWidth: 2,
   borderBottomColor: '#ededed',
   backgroundColor:"#ebb0ff",
-  fontSize:18,
+  fontSize: responsiveFontSize(2.9),
+  fontFamily: "SB - Modern",
   color:"#424241",
   textAlign :'center',
 },
 
 Bold:{
-  fontWeight: 'bold',
+  fontSize: responsiveFontSize(2.9),
+  fontFamily: "SB - Modern",
 },
 kyu:{
   paddingTop:40,
